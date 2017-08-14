@@ -1,0 +1,97 @@
+apply plugin: 'com.android.library'
+apply from: "config.gradle"
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+final DAGGER_VERSION = '2.7'
+final RETROFIT_VERSION = '2.1.0'
+final OKHTTP_VERSION = '1.3.1'
+final LOMBOK_VERSION = '1.16.16'
+final BUTTERKNIFE_VERSION = '8.5.1'
+final SUPPORT_VERSION = '25.3.1'
+final ESPRESSO_VERSION = '2.2.2'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    //Junit
+    testCompile 'junit:junit:4.12'
+    //espresso
+    androidTestCompile("com.android.support.test.espresso:espresso-core:${ESPRESSO_VERSION}", {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    androidTestCompile("com.android.support.test.espresso:espresso-contrib:${ESPRESSO_VERSION}") {
+        exclude module: 'support-annotations'
+        exclude module: 'support-v4'
+        exclude module: 'design'
+        exclude module: 'recyclerview-v7'
+    }
+    compile("com.android.support.test.espresso:espresso-idling-resource:${ESPRESSO_VERSION}") {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile("com.android.support.test.espresso:espresso-idling-resource:${ESPRESSO_VERSION}") {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile('com.android.support.test:runner:0.5') {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile('com.android.support.test:rules:0.5') {
+        exclude module: 'support-annotations'
+    }
+    androidTestCompile('com.jakewharton.espresso:okhttp3-idling-resource:1.0.0') {
+        exclude module: 'support-annotations'
+        exclude module: 'okhttp'
+    }
+    //mockito
+    testCompile "org.mockito:mockito-core:2.8.9"
+    androidTestCompile "org.mockito:mockito-android:2.8.9"
+    //robolectric
+    testCompile "org.robolectric:robolectric:3.3.2"
+    testCompile "org.robolectric:shadows-support-v4:3.3.2"
+    //android support
+    compile "com.android.support:appcompat-v7:${SUPPORT_VERSION}"
+    compile "com.android.support:design:${SUPPORT_VERSION}"
+    compile "com.android.support:recyclerview-v7:${SUPPORT_VERSION}"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
+    //dagger2
+    compile "com.jakewharton:butterknife:${BUTTERKNIFE_VERSION}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${BUTTERKNIFE_VERSION}"
+    compile "com.google.dagger:dagger:${DAGGER_VERSION}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:${DAGGER_VERSION}"
+    //rx+retrofit
+    compile "com.squareup.retrofit2:retrofit:${RETROFIT_VERSION}"
+    compile "com.squareup.retrofit2:converter-gson:${RETROFIT_VERSION}"
+    compile "com.squareup.retrofit2:adapter-rxjava:${RETROFIT_VERSION}"
+    compile "com.squareup.retrofit2:retrofit-mock:${RETROFIT_VERSION}"
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.2'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.2.3'
+    //okhttp
+    compile "com.facebook.stetho:stetho-okhttp3:${OKHTTP_VERSION}"
+    compile "com.facebook.stetho:stetho:${OKHTTP_VERSION}"
+    //stream
+    compile 'com.annimon:stream:1.1.7'
+    //lombok
+    provided "org.projectlombok:lombok:${LOMBOK_VERSION}"
+    annotationProcessor "org.projectlombok:lombok:${LOMBOK_VERSION}"
+}
