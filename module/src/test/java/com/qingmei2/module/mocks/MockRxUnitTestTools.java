@@ -18,7 +18,12 @@ public class MockRxUnitTestTools {
      * 把异步变成同步，方便测试
      */
     public static void asyncToSync() {
-        Func1<Scheduler, Scheduler> schedulerFunc = scheduler -> Schedulers.immediate();
+        Func1<Scheduler, Scheduler> schedulerFunc = new Func1<Scheduler, Scheduler>() {
+            @Override
+            public Scheduler call(Scheduler scheduler) {
+                return Schedulers.immediate();
+            }
+        };
 
         RxAndroidSchedulersHook rxAndroidSchedulersHook = new RxAndroidSchedulersHook() {
             @Override
