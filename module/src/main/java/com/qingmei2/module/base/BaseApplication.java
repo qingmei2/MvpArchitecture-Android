@@ -7,12 +7,15 @@ import com.qingmei2.module.di.component.AppComponentHolder;
 import com.qingmei2.module.di.component.DaggerAppComponent;
 import com.qingmei2.module.di.module.BaseApplicationModule;
 
+
 /**
  * Created by QingMei on 2017/8/14.
  * desc:
  */
 
 public class BaseApplication extends Application {
+
+    private static BaseApplication instance;
 
     @Override
     public void onCreate() {
@@ -21,9 +24,14 @@ public class BaseApplication extends Application {
     }
 
     private void inject() {
+        BaseApplication.instance = this;
         AppComponent appComponent = DaggerAppComponent.builder()
                 .baseApplicationModule(new BaseApplicationModule(this))
                 .build();
         AppComponentHolder.setAppComponent(appComponent);
+    }
+
+    public static BaseApplication getInstance() {
+        return instance;
     }
 }

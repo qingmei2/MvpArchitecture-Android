@@ -20,8 +20,4 @@ public abstract class BaseSubscriber<T> extends Subscriber<T> {
             onError(new ExceptionHandle.ResponeThrowable(e, ExceptionHandle.ERROR.UNKNOWN, ""));
         }
     }
-
-    public void onError(Error error) {
-        onError(ExceptionHandle.handleError(error));
-    }
 }
