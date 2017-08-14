@@ -1,8 +1,5 @@
 package com.qingmei2.module.di.component;
 
-import lombok.Getter;
-import lombok.Setter;
-
 /**
  * Created by QingMei on 2017/8/14.
  * desc:
@@ -10,8 +7,13 @@ import lombok.Setter;
 
 public class AppComponentHolder {
 
-    @Getter
-    @Setter
     public static AppComponent appComponent;
 
+    public static AppComponent getAppComponent() {
+        return appComponent;
+    }
+
+    public static void setAppComponent(AppComponent appComponent) {
+        AppComponentHolder.appComponent = appComponent;
+    }
 }
