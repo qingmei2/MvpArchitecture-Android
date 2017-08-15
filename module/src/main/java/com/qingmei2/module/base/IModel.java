@@ -6,4 +6,6 @@ package com.qingmei2.module.base;
  */
 
 public interface IModel {
+
+    void onDestroy();
 }

@@ -5,7 +5,7 @@ package com.qingmei2.module.base.di.component;
  * desc:
  */
 
-public class AppComponentHolder {
+public class ComponentHolder {
 
     public static AppComponent appComponent;
 
@@ -14,6 +14,6 @@ public class AppComponentHolder {
     }
 
     public static void setAppComponent(AppComponent appComponent) {
-        AppComponentHolder.appComponent = appComponent;
+        ComponentHolder.appComponent = appComponent;
     }
 }

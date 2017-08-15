@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.qingmei2.module.base.di.component.AppComponent;
-import com.qingmei2.module.base.di.component.AppComponentHolder;
+import com.qingmei2.module.base.di.component.ComponentHolder;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
 import javax.inject.Inject;
@@ -70,7 +70,7 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
     protected abstract void setupViews();
 
     protected void componentInject() {
-        setupFragmentComponent(AppComponentHolder.getAppComponent());
+        setupFragmentComponent(ComponentHolder.getAppComponent());
     }
 
     protected abstract void setupFragmentComponent(AppComponent appComponent);

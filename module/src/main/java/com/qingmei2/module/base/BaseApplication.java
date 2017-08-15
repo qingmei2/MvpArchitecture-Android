@@ -1,9 +1,10 @@
 package com.qingmei2.module.base;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.qingmei2.module.base.di.component.AppComponent;
-import com.qingmei2.module.base.di.component.AppComponentHolder;
+import com.qingmei2.module.base.di.component.ComponentHolder;
 import com.qingmei2.module.base.di.component.DaggerAppComponent;
 import com.qingmei2.module.base.di.module.AppModule;
 import com.qingmei2.module.base.di.module.GlobalConfigModule;
@@ -41,7 +42,8 @@ public class BaseApplication extends Application {
                 .httpClientModule(getHttpClientModule())        //注入http配置
                 .serviceModule(getServiceModule())              //注入所有Service
                 .build();
-        AppComponentHolder.setAppComponent(appComponent);
+        Log.i("tag","ComponentHolder.setAppComponent");
+        ComponentHolder.setAppComponent(appComponent);
     }
 
     private AppModule getAppModule() {

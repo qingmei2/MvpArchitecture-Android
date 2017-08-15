@@ -19,7 +19,6 @@ public class ServiceManager implements BaseServiceManager {
     @Inject
     public ServiceManager(UserInfoService userInfoService) {
         this.userInfoService = userInfoService;
-
     }
 
     @Override

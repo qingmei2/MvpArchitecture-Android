@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.qingmei2.module.base.di.component.AppComponent;
-import com.qingmei2.module.base.di.component.AppComponentHolder;
+import com.qingmei2.module.base.di.component.ComponentHolder;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
@@ -22,7 +22,7 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
     private Unbinder mUnbinder;
 
     @Inject
-    protected P mPresenter;
+    protected P presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,13 +36,13 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
 
     @Override
     protected void onDestroy() {
-        if (mPresenter != null) {
-            mPresenter.onDestroy();
+        if (presenter != null) {
+            presenter.onDestroy();
         }
         if (mUnbinder != Unbinder.EMPTY) {
             mUnbinder.unbind();
         }
-        this.mPresenter = null;
+        this.presenter = null;
         this.mUnbinder = null;
         super.onDestroy();
     }
@@ -50,7 +50,7 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
     protected abstract int getLayoutId();
 
     protected void componentInject() {
-        setupActivityComponent(AppComponentHolder.getAppComponent());
+        setupActivityComponent(ComponentHolder.getAppComponent());
     }
 
     protected abstract void initData();
