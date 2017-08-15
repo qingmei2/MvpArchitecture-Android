@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.qingmei2.module.di.component.AppComponent;
-import com.qingmei2.module.di.component.AppComponentHolder;
+import com.qingmei2.module.base.di.component.AppComponent;
+import com.qingmei2.module.base.di.component.AppComponentHolder;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
 import javax.inject.Inject;

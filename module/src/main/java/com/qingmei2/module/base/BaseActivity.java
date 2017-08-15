@@ -3,8 +3,8 @@ package com.qingmei2.module.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.qingmei2.module.di.component.AppComponent;
-import com.qingmei2.module.di.component.AppComponentHolder;
+import com.qingmei2.module.base.di.component.AppComponent;
+import com.qingmei2.module.base.di.component.AppComponentHolder;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;

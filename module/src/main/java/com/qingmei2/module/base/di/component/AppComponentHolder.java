@@ -1,4 +1,4 @@
-package com.qingmei2.module.di.component;
+package com.qingmei2.module.base.di.component;
 
 /**
  * Created by QingMei on 2017/8/14.

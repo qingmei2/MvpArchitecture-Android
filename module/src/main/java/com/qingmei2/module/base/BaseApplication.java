@@ -2,10 +2,10 @@ package com.qingmei2.module.base;
 
 import android.app.Application;
 
-import com.qingmei2.module.di.component.AppComponent;
-import com.qingmei2.module.di.component.AppComponentHolder;
+import com.qingmei2.module.base.di.component.AppComponent;
+import com.qingmei2.module.base.di.component.AppComponentHolder;
 import com.qingmei2.module.di.component.DaggerAppComponent;
-import com.qingmei2.module.di.module.BaseApplicationModule;
+import com.qingmei2.module.base.di.module.BaseApplicationModule;
 
 
 /**

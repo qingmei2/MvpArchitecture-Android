@@ -1,8 +1,8 @@
-package com.qingmei2.module.di.component;
+package com.qingmei2.module.base.di.component;
 
 import com.google.gson.Gson;
 import com.qingmei2.module.base.BaseApplication;
-import com.qingmei2.module.di.module.BaseApplicationModule;
+import com.qingmei2.module.base.di.module.BaseApplicationModule;
 
 import javax.inject.Singleton;
 
