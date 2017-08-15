@@ -1,5 +1,7 @@
 # MvpArchitecture
 
+MVP模式的开发框架，直接down下来即可进行开发。
+
 ### 网络层：
 
 HTTP : Rxjava + Retrofit2 + Okhttp
