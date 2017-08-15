@@ -1,4 +1,4 @@
-package com.qingmei2.module.http.error;
+package com.qingmei2.module.http.base.error;
 
 import rx.Subscriber;
 

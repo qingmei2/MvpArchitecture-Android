@@ -1,6 +1,5 @@
 package com.qingmei2.module.base.di.module;
 
-import com.google.gson.Gson;
 import com.qingmei2.module.base.BaseApplication;
 
 import javax.inject.Singleton;
@@ -13,17 +12,18 @@ import dagger.Provides;
  * desc:
  */
 @Module
-public class BaseApplicationModule {
+public class AppModule {
 
-    private final BaseApplication application;
+    private BaseApplication application;
 
-    public BaseApplicationModule(BaseApplication application) {
+    public AppModule(BaseApplication application) {
         this.application = application;
     }
 
-    @Provides
     @Singleton
-    Gson provideGson() {
-        return new Gson();
+    @Provides
+    public BaseApplication provideApplication() {
+        return application;
     }
+
 }

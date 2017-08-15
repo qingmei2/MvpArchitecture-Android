@@ -1,4 +1,4 @@
-package com.qingmei2.module.http.error;
+package com.qingmei2.module.http.base.error;
 
 import com.google.gson.JsonParseException;
 
@@ -65,7 +65,7 @@ public class ExceptionHandle {
         }
     }
 
-    class ERROR {
+    public class ERROR {
         public static final int UNKNOWN = 1000;
 
         public static final int PARSE_ERROR = 1001;
