@@ -1,7 +1,7 @@
 package com.qingmei2.module.base;
 
+import android.app.Activity;
 import android.app.Application;
-import android.util.Log;
 
 import com.qingmei2.module.base.di.component.AppComponent;
 import com.qingmei2.module.base.di.component.ComponentHolder;
@@ -13,6 +13,11 @@ import com.qingmei2.module.base.di.module.ServiceModule;
 import com.qingmei2.module.http.Api;
 import com.qingmei2.module.http.base.interceptor.HttpRequestHandler;
 
+import javax.inject.Inject;
+
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -24,7 +29,10 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * desc:
  */
 
-public class BaseApplication extends Application {
+public class BaseApplication extends Application implements HasActivityInjector {
+
+    @Inject
+    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
     private static BaseApplication instance;
 
@@ -42,7 +50,7 @@ public class BaseApplication extends Application {
                 .httpClientModule(getHttpClientModule())        //注入http配置
                 .serviceModule(getServiceModule())              //注入所有Service
                 .build();
-        Log.i("tag","ComponentHolder.setAppComponent");
+        appComponent.inject(this);
         ComponentHolder.setAppComponent(appComponent);
     }
 
@@ -75,6 +83,11 @@ public class BaseApplication extends Application {
 
     private ServiceModule getServiceModule() {
         return new ServiceModule();
+    }
+
+    @Override
+    public AndroidInjector<Activity> activityInjector() {
+        return dispatchingAndroidInjector;
     }
 
     public static BaseApplication getInstance() {

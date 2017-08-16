@@ -3,14 +3,13 @@ package com.qingmei2.module.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.qingmei2.module.base.di.component.AppComponent;
-import com.qingmei2.module.base.di.component.ComponentHolder;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import dagger.android.AndroidInjection;
 
 /**
  * Created by QingMei on 2017/8/14.
@@ -26,10 +25,10 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        componentInject();
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         mUnbinder = ButterKnife.bind(this);
-        componentInject();
         initData();
         initView();
     }
@@ -50,14 +49,12 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
     protected abstract int getLayoutId();
 
     protected void componentInject() {
-        setupActivityComponent(ComponentHolder.getAppComponent());
+        AndroidInjection.inject(this);
     }
 
     protected abstract void initData();
 
     protected abstract void initView();
-
-    protected abstract void setupActivityComponent(AppComponent appComponent);
 
     @Override
     public void showLoading() {

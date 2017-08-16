@@ -8,9 +8,6 @@ import com.jakewharton.rxbinding.view.RxView;
 import com.qingmei2.module.R;
 import com.qingmei2.module.R2;
 import com.qingmei2.module.base.BaseActivity;
-import com.qingmei2.module.base.di.component.AppComponent;
-import com.qingmei2.module.di.component.DaggerHomeComponent;
-import com.qingmei2.module.di.module.HomeModule;
 import com.qingmei2.module.http.entity.UserInfo;
 import com.qingmei2.module.mvp.contract.HomeContract;
 import com.qingmei2.module.mvp.presenter.HomePresenter;
@@ -38,15 +35,6 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
     protected void initView() {
         RxView.clicks(btnUserInfo)
                 .subscribe(v -> presenter.requestUserInfo("qingmei2"));
-    }
-
-    @Override
-    protected void setupActivityComponent(AppComponent appComponent) {
-        DaggerHomeComponent.builder()
-                .appComponent(appComponent)
-                .homeModule(new HomeModule(this))
-                .build()
-                .inject(this);
     }
 
     @Override

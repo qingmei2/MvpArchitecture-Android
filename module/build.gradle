@@ -31,7 +31,7 @@ android {
     }
 }
 
-final dagger_version = '2.7'
+final dagger_version = '2.11'
 final retrofit_version = '2.1.0'
 final okhttp_version = '3.8.1'
 final lombok_version = '1.16.16'
@@ -85,11 +85,13 @@ dependencies {
     //Glide
     compile 'com.github.bumptech.glide:glide:4.0.0-RC1'
     //dagger2
+    compile "com.google.dagger:dagger-android:${dagger_version}"
+    compile "com.google.dagger:dagger-android-support:${dagger_version}"
+    annotationProcessor "com.google.dagger:dagger-android-processor:${dagger_version}"
+    annotationProcessor "com.google.dagger:dagger-compiler:${dagger_version}"
+    //butterKnife
     compile "com.jakewharton:butterknife:${butterKnife_version}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnife_version}"
-    compile "com.google.dagger:dagger:${dagger_version}"
-    annotationProcessor "com.google.dagger:dagger-compiler:${dagger_version}"
-    androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:${dagger_version}"
     //rx+retrofit
     compile "com.squareup.retrofit2:retrofit:${retrofit_version}"
     compile "com.squareup.retrofit2:converter-gson:${retrofit_version}"
