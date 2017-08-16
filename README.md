@@ -16,7 +16,7 @@ JavaBean: lombok
 
 Java8：Stream + Lambda
 
-Dependencies Injection: Dagger2
+Dependencies Injection: Dagger2-Android
 
 ### UI层：
 
