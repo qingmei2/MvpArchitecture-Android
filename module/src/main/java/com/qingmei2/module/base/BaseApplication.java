@@ -3,13 +3,11 @@ package com.qingmei2.module.base;
 import android.app.Activity;
 import android.app.Application;
 
-import com.qingmei2.module.base.di.component.AppComponent;
-import com.qingmei2.module.base.di.component.ComponentHolder;
-import com.qingmei2.module.base.di.component.DaggerAppComponent;
-import com.qingmei2.module.base.di.module.AppModule;
-import com.qingmei2.module.base.di.module.GlobalConfigModule;
-import com.qingmei2.module.base.di.module.HttpClientModule;
-import com.qingmei2.module.base.di.module.ServiceModule;
+import com.qingmei2.module.di.DaggerAppComponent;
+import com.qingmei2.module.di.module.AppModule;
+import com.qingmei2.module.di.module.GlobalConfigModule;
+import com.qingmei2.module.di.module.HttpClientModule;
+import com.qingmei2.module.di.module.ServiceModule;
 import com.qingmei2.module.http.Api;
 import com.qingmei2.module.http.base.interceptor.HttpRequestHandler;
 
@@ -44,14 +42,13 @@ public class BaseApplication extends Application implements HasActivityInjector 
 
     private void inject() {
         BaseApplication.instance = this;
-        AppComponent appComponent = DaggerAppComponent.builder()
+        DaggerAppComponent.builder()
                 .appModule(getAppModule())                      //注入application
                 .globalConfigModule(getGlobalConfigModule())    //注入全局配置
                 .httpClientModule(getHttpClientModule())        //注入http配置
                 .serviceModule(getServiceModule())              //注入所有Service
-                .build();
-        appComponent.inject(this);
-        ComponentHolder.setAppComponent(appComponent);
+                .build()
+                .inject(this);
     }
 
     private AppModule getAppModule() {

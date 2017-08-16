@@ -1,4 +1,4 @@
-package com.qingmei2.module.base.di.module;
+package com.qingmei2.module.di.module;
 
 import com.qingmei2.module.base.BaseApplication;
 

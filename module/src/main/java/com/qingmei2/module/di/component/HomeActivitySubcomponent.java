@@ -1,6 +1,6 @@
 package com.qingmei2.module.di.component;
 
-import com.qingmei2.module.base.di.scope.ActivityScope;
+import com.qingmei2.module.di.scope.ActivityScope;
 import com.qingmei2.module.mvp.contract.HomeContract;
 import com.qingmei2.module.mvp.model.HomeModel;
 import com.qingmei2.module.mvp.ui.HomeActivity;

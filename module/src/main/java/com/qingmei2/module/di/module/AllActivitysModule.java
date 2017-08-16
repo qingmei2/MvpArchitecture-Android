@@ -12,16 +12,18 @@ import dagger.android.AndroidInjector;
 import dagger.multibindings.IntoMap;
 
 /**
- * Created by QingMei on 2017/8/14.
+ * Created by QingMei on 2017/8/16.
  * desc:
  */
-@Module(subcomponents = HomeActivitySubcomponent.class)
-public abstract class HomeActivityModule {
+@Module(subcomponents = {
+        HomeActivitySubcomponent.class
+})
+public abstract class AllActivitysModule {
 
     @Binds
     @IntoMap
     @ActivityKey(HomeActivity.class)
     abstract AndroidInjector.Factory<? extends Activity>
-    bindHomeActivityInjectorFactory(HomeActivitySubcomponent.Builder builder);
+    bindMainActivityInjectorFactory(HomeActivitySubcomponent.Builder builder);
 
 }

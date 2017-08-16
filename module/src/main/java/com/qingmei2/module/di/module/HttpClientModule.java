@@ -1,4 +1,4 @@
-package com.qingmei2.module.base.di.module;
+package com.qingmei2.module.di.module;
 
 import com.google.gson.Gson;
 import com.qingmei2.module.http.base.interceptor.RequestInterceptor;
