@@ -4,8 +4,8 @@ import android.Manifest;
 import android.os.Build;
 
 import com.qingmei2.module.BuildConfig;
-import com.qingmei2.module.base.BaseTestApplication;
-import com.qingmei2.module.base.BaseTestTestRunner;
+import com.qingmei2.module.base.BaseUnitTestApplication;
+import com.qingmei2.module.base.BaseUnitTestTestRunner;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,8 +23,8 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
  * desc:
  */
 
-@RunWith(BaseTestTestRunner.class)
-@Config(constants = BuildConfig.class,manifest = Config.NONE, sdk = Build.VERSION_CODES.JELLY_BEAN, application = BaseTestApplication.class)
+@RunWith(BaseUnitTestTestRunner.class)
+@Config(constants = BuildConfig.class,manifest = Config.NONE, sdk = Build.VERSION_CODES.JELLY_BEAN, application = BaseUnitTestApplication.class)
 public final class PermissionsTest {
 
     private static final String[] EXPECTED_PERMISSIONS = {

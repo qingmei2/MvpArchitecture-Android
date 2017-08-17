@@ -9,9 +9,9 @@ import org.robolectric.RobolectricTestRunner;
  * desc:
  */
 
-public class BaseTestTestRunner extends RobolectricTestRunner {
+public class BaseUnitTestTestRunner extends RobolectricTestRunner {
 
-    public BaseTestTestRunner(Class<?> testClass) throws InitializationError {
+    public BaseUnitTestTestRunner(Class<?> testClass) throws InitializationError {
         super(testClass);
 
         // 从源码知道MavenDependencyResolver默认以RoboSettings的repositoryUrl和repositoryId为默认值，因此只需要对RoboSetting进行赋值即可

@@ -5,5 +5,5 @@ package com.qingmei2.module.base;
  * desc:
  */
 
-public class BaseTestApplication extends BaseApplication {
+public class BaseUnitTestApplication extends BaseApplication {
 }
