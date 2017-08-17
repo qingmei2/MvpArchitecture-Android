@@ -12,6 +12,7 @@ android {
         versionCode 1
         versionName "1.0"
 
+        multiDexEnabled true
         testInstrumentationRunner "com.qingmei2.module.base.BaseAndroidTestJunitRunner"
 
     }
