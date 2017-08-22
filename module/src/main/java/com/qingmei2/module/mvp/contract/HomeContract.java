@@ -15,7 +15,7 @@ import rx.Observable;
 public interface HomeContract {
 
     public interface View extends IView {
-        void onGetUserInfo(UserInfo userInfo);
+        void onGetUserInfo(String loginName);
 
         void onError(String errorMassage);
     }

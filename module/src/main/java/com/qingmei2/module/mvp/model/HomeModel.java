@@ -1,5 +1,7 @@
 package com.qingmei2.module.mvp.model;
 
+import android.support.annotation.VisibleForTesting;
+
 import com.qingmei2.module.base.BaseModel;
 import com.qingmei2.module.http.cache.CacheUtils;
 import com.qingmei2.module.http.entity.UserInfo;
@@ -27,10 +29,15 @@ public class HomeModel extends BaseModel<ServiceManager> implements HomeContract
     }
 
     @Override
-    public Observable<UserInfo> requestUserInfo(String userName) {
+    public Observable<UserInfo> requestUserInfo(final String userName) {
         return serviceManager.getUserInfoService()
-                .getRxUser(userName)
-                .compose(CacheUtils.saveCaches(new DynamicKey(DYNAMIC_USER_INFO + userName), false))
+                .getUserInfo(userName)
+                .compose(getUserInfoCache(userName, false))
                 .compose(RxUtils.switchThread());
+    }
+
+    @VisibleForTesting
+    public Observable.Transformer<UserInfo, UserInfo> getUserInfoCache(final String userName, final boolean refresh) {
+        return CacheUtils.getUserInfoCacheTransformer(new DynamicKey(DYNAMIC_USER_INFO + userName), refresh);
     }
 }

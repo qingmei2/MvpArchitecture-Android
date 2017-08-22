@@ -14,6 +14,6 @@ import rx.Observable;
 public interface UserInfoService {
 
     @GET("users/{user}")
-    Observable<UserInfo> getRxUser(@Path("user") String user);
+    Observable<UserInfo> getUserInfo(@Path("user") String user);
 
 }

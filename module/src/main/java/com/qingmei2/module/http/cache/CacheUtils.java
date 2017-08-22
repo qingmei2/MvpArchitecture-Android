@@ -15,7 +15,7 @@ public class CacheUtils {
 
     public static final String DYNAMIC_USER_INFO = "dynamicKey_userInfo_";
 
-    public static Observable.Transformer<UserInfo, UserInfo> saveCaches(DynamicKey dynamicKey, boolean refresh) {
+    public static Observable.Transformer<UserInfo, UserInfo> getUserInfoCacheTransformer(DynamicKey dynamicKey, boolean refresh) {
         return tObservable -> CacheProviders
                 .getUserInfoCacheProviders()
                 .getUserInfo(tObservable, dynamicKey, new EvictDynamicKey(refresh));
