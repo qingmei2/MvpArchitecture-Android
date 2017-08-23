@@ -37,20 +37,21 @@ public class HomeModelTest {
 
     @Before
     public void init() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        MockRxUnitTestTools.asyncToSync();
+        MockitoAnnotations.initMocks(this); //初始化mock
+        MockRxUnitTestTools.asyncToSync();  //把异步变成同步，方便测试
+
         retrofitHelper = new MockRetrofitHelper();
-        UserInfoService userInfoService = retrofitHelper.create(UserInfoService.class);
+        UserInfoService userInfoService = retrofitHelper.create(UserInfoService.class);//mock userInfoService
 
-        homeModel = spy(new HomeModel(serviceManager));
+        homeModel = spy(new HomeModel(serviceManager));//监控真实对象
 
-        doReturn(transformer).when(homeModel).getUserInfoCache(anyString(), anyBoolean());
+        doReturn(transformer).when(homeModel).getUserInfoCache(anyString(), anyBoolean());//处理缓存
         when(serviceManager.getUserInfoService()).thenReturn(userInfoService);
     }
 
     @Test
     public void requestUserInfo() throws Exception {
-        retrofitHelper.setPath(MockAssets.USER_JSON);
+        retrofitHelper.setPath(MockAssets.USER_JSON);//mock server数据
 
         UserInfo userInfo = homeModel.requestUserInfo("qingmei2")
                 .toBlocking()
@@ -59,6 +60,4 @@ public class HomeModelTest {
         assertEquals(userInfo.getName(), "青梅");
         assertEquals(userInfo.getLogin(), "qingmei2");
     }
-
-
 }

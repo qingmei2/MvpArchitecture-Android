@@ -50,7 +50,6 @@ public class HomePresenterTest {
 
         presenter.requestUserInfo("qingmei2");
 
-
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(view).onGetUserInfo(captor.capture());
         verify(view, never()).onError(anyString());
@@ -71,5 +70,4 @@ public class HomePresenterTest {
         verify(view, never()).onGetUserInfo(anyString());
         verify(view).onError("用户信息为空");
     }
-
 }

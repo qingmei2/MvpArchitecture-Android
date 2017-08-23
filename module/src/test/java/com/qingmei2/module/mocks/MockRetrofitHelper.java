@@ -34,6 +34,8 @@ public class MockRetrofitHelper {
 
     private String path;
 
+    private int statusCode = 200;
+
     public void setPath(String path) {
         this.path = path;
     }
@@ -49,11 +51,13 @@ public class MockRetrofitHelper {
 
             Response response = new Response.Builder().request(chain.request())
                     .protocol(Protocol.HTTP_1_1)
-                    .code(200)
+                    .code(statusCode)
                     .body(body)
                     .message("mock_message")
                     .build();
             return response;
         }
     }
+
+
 }
