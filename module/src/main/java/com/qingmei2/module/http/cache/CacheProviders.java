@@ -1,28 +1,19 @@
 package com.qingmei2.module.http.cache;
 
-import android.support.v4.content.ContextCompat;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
-import com.qingmei2.module.base.BaseApplication;
+import lombok.Getter;
 
-import io.rx_cache.internal.RxCache;
-import io.victoralbertos.jolyglot.GsonSpeaker;
-
-/**
- * Created by TaoPu on 17/7/6.
- */
-
+@Singleton
 public class CacheProviders {
 
-    private static UserInfoCacheProviders userInfoCacheProviders;
+    @Getter
+    private UserInfoCacheProviders userInfoCacheProviders;
 
-    public static UserInfoCacheProviders getUserInfoCacheProviders() {
-        if (userInfoCacheProviders == null) {
-            synchronized (UserInfoCacheProviders.class) {
-                userInfoCacheProviders = new RxCache.Builder()
-                        .persistence(ContextCompat.getExternalCacheDirs(BaseApplication.getInstance())[0], new GsonSpeaker())
-                        .using(UserInfoCacheProviders.class);
-            }
-        }
-        return userInfoCacheProviders;
+    @Inject
+    public CacheProviders(UserInfoCacheProviders userInfoCacheProviders) {
+        this.userInfoCacheProviders = userInfoCacheProviders;
     }
+
 }

@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.qingmei2.module.base.BaseApplication;
 import com.qingmei2.module.di.module.AllActivitysModule;
 import com.qingmei2.module.di.module.AppModule;
+import com.qingmei2.module.di.module.CacheModule;
 import com.qingmei2.module.di.module.GlobalConfigModule;
 import com.qingmei2.module.di.module.HttpClientModule;
 import com.qingmei2.module.di.module.ServiceModule;
@@ -28,6 +29,7 @@ import okhttp3.OkHttpClient;
         HttpClientModule.class,
         GlobalConfigModule.class,
         ServiceModule.class,
+        CacheModule.class,
         AllActivitysModule.class
 })
 public interface AppComponent {

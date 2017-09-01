@@ -2,6 +2,7 @@ package com.qingmei2.module.di.module;
 
 import com.qingmei2.module.di.component.BaseActivityComponent;
 import com.qingmei2.module.di.module.activity.HomeActivityModule;
+import com.qingmei2.module.di.scope.ActivityScope;
 import com.qingmei2.module.mvp.ui.HomeActivity;
 
 import dagger.Module;
@@ -16,6 +17,7 @@ import dagger.android.ContributesAndroidInjector;
 })
 public abstract class AllActivitysModule {
 
+    @ActivityScope
     @ContributesAndroidInjector(modules = HomeActivityModule.class)
     abstract HomeActivity contributeHomeActivitytInjector();
 

@@ -3,13 +3,14 @@ package com.qingmei2.module.http.service;
 import com.qingmei2.module.http.base.BaseServiceManager;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import lombok.Getter;
 
 /**
  * Created by Glooory on 17/5/15.
  */
-
+@Singleton
 public class ServiceManager implements BaseServiceManager {
 
     @Getter
