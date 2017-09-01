@@ -19,6 +19,8 @@ public class BaseModel<S extends BaseServiceManager> implements IModel {
 
     @Inject
     protected CacheProviders cacheProviders;
+    @Inject
+    protected CacheProviders cacheProviders2;
 
     public BaseModel(S serviceManager) {
         this.serviceManager = serviceManager;

@@ -16,7 +16,7 @@ import rx.Observable;
 
 public interface UserInfoCacheProviders {
 
-    @LifeCache(duration = 2, timeUnit = TimeUnit.MINUTES)
+    @LifeCache(duration = 10, timeUnit = TimeUnit.SECONDS)
     Observable<UserInfo> getUserInfo(
             Observable<UserInfo> userInfoObservable,
             DynamicKey dynamicKey,

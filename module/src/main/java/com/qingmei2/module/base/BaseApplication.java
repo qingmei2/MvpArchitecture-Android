@@ -2,9 +2,11 @@ package com.qingmei2.module.base;
 
 import android.app.Activity;
 import android.app.Application;
+import android.support.v4.content.ContextCompat;
 
 import com.qingmei2.module.di.DaggerAppComponent;
 import com.qingmei2.module.di.module.AppModule;
+import com.qingmei2.module.di.module.CacheModule;
 import com.qingmei2.module.di.module.GlobalConfigModule;
 import com.qingmei2.module.di.module.HttpClientModule;
 import com.qingmei2.module.di.module.ServiceModule;
@@ -43,6 +45,7 @@ public class BaseApplication extends Application implements HasActivityInjector 
     private void inject() {
         BaseApplication.instance = this;
         DaggerAppComponent.builder()
+                .cacheModule(getCacheModule())
                 .appModule(getAppModule())                      //注入application
                 .globalConfigModule(getGlobalConfigModule())    //注入全局配置
                 .httpClientModule(getHttpClientModule())        //注入http配置
@@ -58,7 +61,7 @@ public class BaseApplication extends Application implements HasActivityInjector 
     private GlobalConfigModule getGlobalConfigModule() {
         return GlobalConfigModule.buidler()
                 .baseurl(Api.BASE_API)
-                //这行代码为log打印网络请求信息，可以考虑在release版中取消该行改吗
+                //这行代码为log打印网络请求信息，可以考虑在release版中取消该行代码
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .globeHttpHandler(new HttpRequestHandler() {
                     @Override
@@ -89,5 +92,9 @@ public class BaseApplication extends Application implements HasActivityInjector 
 
     public static BaseApplication getInstance() {
         return instance;
+    }
+
+    public CacheModule getCacheModule() {
+        return new CacheModule(ContextCompat.getExternalCacheDirs(this)[0]);
     }
 }

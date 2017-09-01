@@ -1,9 +1,6 @@
 package com.qingmei2.module.di.module;
 
-import android.support.v4.content.ContextCompat;
-
-import com.qingmei2.module.base.BaseApplication;
-import com.qingmei2.module.http.cache.UserInfoCacheProviders;
+import java.io.File;
 
 import javax.inject.Singleton;
 
@@ -19,17 +16,17 @@ import io.victoralbertos.jolyglot.GsonSpeaker;
 @Module
 public class CacheModule {
 
-    @Provides
-    @Singleton
-    RxCache provideRxCache(BaseApplication application) {
-        return new RxCache.Builder()
-                .persistence(ContextCompat.getExternalCacheDirs(BaseApplication.getInstance())[0], new GsonSpeaker());
+    private final File cacheDir;
+
+    public CacheModule(File cacheDir) {
+        this.cacheDir = cacheDir;
     }
 
     @Provides
     @Singleton
-    UserInfoCacheProviders providers(RxCache rxCache) {
-        return rxCache.using(UserInfoCacheProviders.class);
+    RxCache provideRxCache() {
+        return new RxCache.Builder()
+                .persistence(cacheDir, new GsonSpeaker());
     }
 
 }
