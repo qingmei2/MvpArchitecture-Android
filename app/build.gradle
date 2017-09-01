@@ -1,6 +1,4 @@
-
 apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.android.application'
 
 android {
@@ -36,8 +34,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile project(':module')
 }
