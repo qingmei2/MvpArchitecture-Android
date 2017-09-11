@@ -1,5 +1,7 @@
 package com.qingmei2.module.http.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import lombok.Data;
 
 /**
@@ -10,5 +12,10 @@ import lombok.Data;
 public class UserInfo {
 
     public String name;
+
     public String login;
+
+    @SerializedName("avatar_url")
+    public String avatarUrl;
+
 }

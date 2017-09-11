@@ -15,6 +15,7 @@ import org.mockito.MockitoAnnotations;
 import rx.Observable;
 
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
@@ -50,12 +51,12 @@ public class HomePresenterTest {
 
         presenter.requestUserInfo("qingmei2");
 
-        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<UserInfo> captor = ArgumentCaptor.forClass(UserInfo.class);
         verify(view).onGetUserInfo(captor.capture());
         verify(view, never()).onError(anyString());
 
-        String loginName = captor.getValue();
-        assertEquals(userInfo.getLogin(), loginName);
+        UserInfo captureUserInfo = captor.getValue();
+        assertEquals(userInfo, captureUserInfo);
     }
 
     @Test
@@ -67,7 +68,7 @@ public class HomePresenterTest {
 
         presenter.requestUserInfo("qingmei2");
 
-        verify(view, never()).onGetUserInfo(anyString());
+        verify(view, never()).onGetUserInfo(any());
         verify(view).onError("用户信息为空");
     }
 }

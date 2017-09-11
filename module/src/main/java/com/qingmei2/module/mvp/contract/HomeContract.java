@@ -15,13 +15,13 @@ import rx.Observable;
 public interface HomeContract {
 
     public interface View extends IView {
-        void onGetUserInfo(String loginName);
+        void onGetUserInfo(UserInfo userInfo);
 
         void onError(String errorMassage);
     }
 
     public interface Presenter extends IPresenter {
-        void requestUserInfo(String userName);
+        void requestUserInfo(String user);
     }
 
     public interface Model extends IModel {
