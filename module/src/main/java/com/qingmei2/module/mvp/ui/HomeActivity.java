@@ -14,6 +14,8 @@ import com.qingmei2.module.http.entity.UserInfo;
 import com.qingmei2.module.mvp.contract.HomeContract;
 import com.qingmei2.module.mvp.presenter.HomePresenter;
 
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 
 public class HomeActivity extends BaseActivity<HomePresenter> implements HomeContract.View {
@@ -38,6 +40,7 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
     @Override
     protected void initView() {
         RxView.clicks(btnUserInfo)
+                .throttleFirst(500, TimeUnit.MILLISECONDS)
                 .subscribe(v -> presenter.requestUserInfo("qingmei2"));
     }
 

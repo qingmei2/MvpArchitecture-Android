@@ -1,7 +1,6 @@
 package com.qingmei2.module.mvp.model;
 
 import android.support.annotation.VisibleForTesting;
-import android.util.Log;
 
 import com.qingmei2.module.base.BaseModel;
 import com.qingmei2.module.http.entity.UserInfo;
@@ -29,7 +28,6 @@ public class HomeModel extends BaseModel<ServiceManager> implements HomeContract
 
     @Override
     public Observable<UserInfo> requestUserInfo(final String userName) {
-        Log.i("tag111", cacheProviders.toString() + "\n" + cacheProviders2.toString());
         return serviceManager.getUserInfoService()
                 .getUserInfo(userName)
                 .compose(getUserInfoCache(userName, false))
