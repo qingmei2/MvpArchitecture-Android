@@ -9,8 +9,8 @@ import com.jakewharton.rxbinding.view.RxView;
 import com.qingmei2.module.R;
 import com.qingmei2.module.R2;
 import com.qingmei2.module.base.BaseActivity;
-import com.qingmei2.module.di.module.GlideApp;
 import com.qingmei2.module.http.entity.UserInfo;
+import com.qingmei2.module.image.GlideApp;
 import com.qingmei2.module.mvp.contract.HomeContract;
 import com.qingmei2.module.mvp.presenter.HomePresenter;
 
@@ -46,10 +46,10 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
 
     @Override
     public void onGetUserInfo(UserInfo userInfo) {
-        tvUserInfo.setText("网络请求Login:" + userInfo.getName());
+        tvUserInfo.setText("网络请求Login:" + userInfo.toString());
         GlideApp.with(this)
                 .load(userInfo.getAvatarUrl())
-                .centerCrop()
+                .circleCrop()
                 .into(ivTest);
     }
 
