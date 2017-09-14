@@ -41,79 +41,79 @@ final espresso_version = '2.2.2'
 final glide_version = '4.1.1'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     //Junit
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     //espresso
-    androidTestCompile("com.android.support.test.espresso:espresso-core:${espresso_version}", {
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:${espresso_version}", {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
-    androidTestCompile("com.android.support.test.espresso:espresso-contrib:${espresso_version}") {
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:${espresso_version}") {
         exclude module: 'support-annotations'
         exclude module: 'support-v4'
         exclude module: 'design'
         exclude module: 'recyclerview-v7'
     }
-    compile("com.android.support.test.espresso:espresso-idling-resource:${espresso_version}") {
+    implementation("com.android.support.test.espresso:espresso-idling-resource:${espresso_version}") {
         exclude module: 'support-annotations'
     }
-    androidTestCompile("com.android.support.test.espresso:espresso-idling-resource:${espresso_version}") {
+    androidTestImplementation("com.android.support.test.espresso:espresso-idling-resource:${espresso_version}") {
         exclude module: 'support-annotations'
     }
-    androidTestCompile('com.android.support.test:runner:0.5') {
+    androidTestImplementation('com.android.support.test:runner:0.5') {
         exclude module: 'support-annotations'
     }
-    androidTestCompile('com.android.support.test:rules:0.5') {
+    androidTestImplementation('com.android.support.test:rules:0.5') {
         exclude module: 'support-annotations'
     }
-    androidTestCompile('com.jakewharton.espresso:okhttp3-idling-resource:1.0.0') {
+    androidTestImplementation('com.jakewharton.espresso:okhttp3-idling-resource:1.0.0') {
         exclude module: 'support-annotations'
         exclude module: 'okhttp'
     }
     //mockito
-    testCompile "org.mockito:mockito-core:2.8.47"
-    androidTestCompile "org.mockito:mockito-android:2.8.47"
+    testImplementation "org.mockito:mockito-core:2.8.47"
+    androidTestImplementation "org.mockito:mockito-android:2.8.47"
     //robolectric
-    testCompile "org.robolectric:robolectric:3.3.2"
-    testCompile "org.robolectric:shadows-support-v4:3.3.2"
+    testImplementation "org.robolectric:robolectric:3.3.2"
+    testImplementation "org.robolectric:shadows-support-v4:3.3.2"
     //android support
-    compile "com.android.support:appcompat-v7:${support_version}"
-    compile "com.android.support:design:${support_version}"
-    compile "com.android.support:recyclerview-v7:${support_version}"
-    compile "com.android.support:support-annotations:${support_version}"
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation "com.android.support:appcompat-v7:${support_version}"
+    implementation "com.android.support:design:${support_version}"
+    implementation "com.android.support:recyclerview-v7:${support_version}"
+    implementation "com.android.support:support-annotations:${support_version}"
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     //Glide
-    compile "com.github.bumptech.glide:glide:${glide_version}"
+    implementation "com.github.bumptech.glide:glide:${glide_version}"
     annotationProcessor "com.github.bumptech.glide:compiler:${glide_version}"
     //dagger2
-    compile "com.google.dagger:dagger-android:${dagger_version}"
-    compile "com.google.dagger:dagger-android-support:${dagger_version}"
+    implementation "com.google.dagger:dagger-android:${dagger_version}"
+    implementation "com.google.dagger:dagger-android-support:${dagger_version}"
     annotationProcessor "com.google.dagger:dagger-android-processor:${dagger_version}"
     annotationProcessor "com.google.dagger:dagger-compiler:${dagger_version}"
     //butterKnife
-    compile "com.jakewharton:butterknife:${butterKnife_version}"
+    implementation "com.jakewharton:butterknife:${butterKnife_version}"
     annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnife_version}"
     //rx+retrofit
-    compile "com.squareup.retrofit2:retrofit:${retrofit_version}"
-    compile "com.squareup.retrofit2:converter-gson:${retrofit_version}"
-    compile "com.squareup.retrofit2:adapter-rxjava:${retrofit_version}"
-    compile "com.squareup.retrofit2:retrofit-mock:${retrofit_version}"
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.3.0'
-    compile 'com.trello:rxlifecycle-android:1.0'
-    compile 'com.trello:rxlifecycle-components:1.0'
+    implementation "com.squareup.retrofit2:retrofit:${retrofit_version}"
+    implementation "com.squareup.retrofit2:converter-gson:${retrofit_version}"
+    implementation "com.squareup.retrofit2:adapter-rxjava:${retrofit_version}"
+    implementation "com.squareup.retrofit2:retrofit-mock:${retrofit_version}"
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.3.0'
+    implementation 'com.trello:rxlifecycle-android:1.0'
+    implementation 'com.trello:rxlifecycle-components:1.0'
     //okhttp
-    compile "com.squareup.okhttp3:okhttp:${okhttp_version}"
-    compile "com.squareup.okhttp3:logging-interceptor:${okhttp_version}"
+    implementation "com.squareup.okhttp3:okhttp:${okhttp_version}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${okhttp_version}"
     //stream
-    compile 'com.annimon:stream:1.1.8'
+    implementation 'com.annimon:stream:1.1.8'
     //lombok
     provided "org.projectlombok:lombok:${lombok_version}"
     annotationProcessor "org.projectlombok:lombok:${lombok_version}"
     //RxCache
-    compile('com.github.VictorAlbertos.RxCache:runtime:1.7.0-1.x') {
+    implementation('com.github.VictorAlbertos.RxCache:runtime:1.7.0-1.x') {
         exclude group: 'org.glassfish', module: 'javax.annotation'
     }
-    compile 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
+    implementation 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
 }
