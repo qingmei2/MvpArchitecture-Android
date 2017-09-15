@@ -1,7 +1,8 @@
 package com.qingmei2.module.base;
 
 
-import org.reactivestreams.Subscription;
+import com.qingmei2.module.util.RxUtils;
+import com.trello.rxlifecycle2.LifecycleTransformer;
 
 /**
  * Created by QingMei on 2017/8/14.
@@ -9,7 +10,6 @@ import org.reactivestreams.Subscription;
  */
 
 public class BasePresenter<V extends IView, M extends IModel> implements IPresenter {
-//    protected CompositeSubscription mCompositeSubscription;
 
     protected V mRootView;
     protected M mModel;
@@ -25,25 +25,15 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
 
     @Override
     public void onDestroy() {
-        unSubscribe();
         if (mModel != null) {
             mModel.onDestroy();
             this.mModel = null;
         }
         this.mRootView = null;
-//        this.mCompositeSubscription = null;
     }
 
-    protected void addSubscription(Subscription subscription) {
-//        if (mCompositeSubscription == null) {
-//            mCompositeSubscription = new CompositeSubscription();
-//        }
-//        mCompositeSubscription.add(subscription);
+    protected  <T> LifecycleTransformer<T> bindView(IView view) {
+        return RxUtils.bindToLifecycle(view);
     }
 
-    protected void unSubscribe() {
-//        if (mCompositeSubscription != null) {
-//            mCompositeSubscription.unsubscribe();
-//        }
-    }
 }

@@ -23,6 +23,9 @@ import static junit.framework.Assert.assertTrue;
 @RunWith(AndroidJUnit4.class)
 public class CacheProvidersTest {
 
+    /**
+     * test for device's cache file path.
+     */
     @Test
     public void getCacheFilesTest() throws Exception {
         // Context of the app under test.

@@ -21,6 +21,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View, HomeContract
     @Override
     public void requestUserInfo(String userName) {
         mModel.requestUserInfo(userName)
+                .compose(bindView(mRootView))
                 .subscribe(info -> Optional.ofNullable(info)
                                 .ifPresentOrElse(userInfo -> mRootView.onGetUserInfo(userInfo)
                                         , () -> mRootView.onError("用户信息为空"))
