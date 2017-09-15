@@ -54,7 +54,7 @@ public class HomeModelTest {
         retrofitHelper.setPath(MockAssets.USER_JSON);//mock server数据
 
         UserInfo userInfo = homeModel.requestUserInfo("qingmei2")
-                .blockingFirst();
+                .blockingGet();
 
         assertEquals(userInfo.getName(), "青梅");
         assertEquals(userInfo.getLogin(), "qingmei2");

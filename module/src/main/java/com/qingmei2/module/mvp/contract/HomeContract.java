@@ -5,7 +5,7 @@ import com.qingmei2.module.base.IPresenter;
 import com.qingmei2.module.base.IView;
 import com.qingmei2.module.http.entity.UserInfo;
 
-import io.reactivex.Observable;
+import io.reactivex.Maybe;
 
 
 /**
@@ -26,6 +26,6 @@ public interface HomeContract {
     }
 
     public interface Model extends IModel {
-        Observable<UserInfo> requestUserInfo(String userName);
+        Maybe<UserInfo> requestUserInfo(String userName);
     }
 }

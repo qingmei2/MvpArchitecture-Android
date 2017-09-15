@@ -2,7 +2,7 @@ package com.qingmei2.module.http.service;
 
 import com.qingmei2.module.http.entity.UserInfo;
 
-import io.reactivex.Observable;
+import io.reactivex.Maybe;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -14,6 +14,6 @@ import retrofit2.http.Path;
 public interface UserInfoService {
 
     @GET("users/{user}")
-    Observable<UserInfo> getUserInfo(@Path("user") String user);
+    Maybe<UserInfo> getUserInfo(@Path("user") String user);
 
 }

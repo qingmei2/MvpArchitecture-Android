@@ -4,7 +4,7 @@ import com.qingmei2.module.http.entity.UserInfo;
 
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
+import io.reactivex.Maybe;
 import io.rx_cache2.DynamicKey;
 import io.rx_cache2.EvictDynamicKey;
 import io.rx_cache2.LifeCache;
@@ -18,8 +18,8 @@ import io.rx_cache2.LifeCache;
 public interface UserInfoCacheProviders {
 
     @LifeCache(duration = 10, timeUnit = TimeUnit.SECONDS)
-    Observable<UserInfo> getUserInfo(
-            Observable<UserInfo> userInfoObservable,
+    Maybe<UserInfo> getUserInfo(
+            Maybe<UserInfo> userInfoObservable,
             DynamicKey dynamicKey,
             EvictDynamicKey evictDynamicKey
     );
