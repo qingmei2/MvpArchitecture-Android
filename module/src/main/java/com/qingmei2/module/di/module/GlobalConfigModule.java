@@ -15,7 +15,6 @@ import dagger.Provides;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 
-import static com.jakewharton.rxbinding.internal.Preconditions.checkNotNull;
 
 /**
  * Created by Glooory on 17/5/15.
@@ -95,7 +94,6 @@ public class GlobalConfigModule {
         }
 
         public GlobalConfigModule build() {
-            checkNotNull(apiUrl, "baseurl is required");
             return new GlobalConfigModule(this);
         }
     }

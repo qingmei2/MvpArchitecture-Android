@@ -5,7 +5,8 @@ import com.qingmei2.module.base.IPresenter;
 import com.qingmei2.module.base.IView;
 import com.qingmei2.module.http.entity.UserInfo;
 
-import rx.Observable;
+import io.reactivex.Observable;
+
 
 /**
  * Created by QingMei on 2017/8/14.

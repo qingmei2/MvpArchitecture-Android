@@ -1,13 +1,13 @@
 package com.qingmei2.module.util;
 
 import com.qingmei2.module.base.IView;
-import com.trello.rxlifecycle.LifecycleTransformer;
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-import com.trello.rxlifecycle.components.support.RxFragment;
+import com.trello.rxlifecycle2.LifecycleTransformer;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.ObservableTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Glooory on 17/5/15.
@@ -26,7 +26,7 @@ public class RxUtils {
 
     }
 
-    public static <T> Observable.Transformer<T, T> switchThread() {
+    public static <T> ObservableTransformer<T, T> switchThread() {
         return tObservable ->
                 tObservable
                         .subscribeOn(Schedulers.io())

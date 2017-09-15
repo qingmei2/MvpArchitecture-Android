@@ -10,9 +10,10 @@ import com.qingmei2.module.util.RxUtils;
 
 import javax.inject.Inject;
 
-import io.rx_cache.DynamicKey;
-import io.rx_cache.EvictDynamicKey;
-import rx.Observable;
+import io.reactivex.Observable;
+import io.reactivex.ObservableTransformer;
+import io.rx_cache2.DynamicKey;
+import io.rx_cache2.EvictDynamicKey;
 
 /**
  * Created by QingMei on 2017/8/14.
@@ -35,7 +36,7 @@ public class HomeModel extends BaseModel<ServiceManager> implements HomeContract
     }
 
     @VisibleForTesting
-    public Observable.Transformer<UserInfo, UserInfo> getUserInfoCache(final String dynamicKey, final boolean refresh) {
+    public ObservableTransformer<UserInfo, UserInfo> getUserInfoCache(final String dynamicKey, final boolean refresh) {
         return observable -> cacheProviders
                 .getUserInfoCacheProviders()
                 .getUserInfo(observable, new DynamicKey(dynamicKey), new EvictDynamicKey(refresh));

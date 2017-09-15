@@ -5,7 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jakewharton.rxbinding.view.RxView;
+import com.jakewharton.rxbinding2.view.RxView;
 import com.qingmei2.module.R;
 import com.qingmei2.module.R2;
 import com.qingmei2.module.base.BaseActivity;

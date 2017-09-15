@@ -1,6 +1,6 @@
 # MvpArchitecture
 
-MVP模式的开发框架，直接down下来即可进行开发。
+MVP模式的开发框架。
 
 ### 网络层：
 

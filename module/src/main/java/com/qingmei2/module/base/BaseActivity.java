@@ -3,7 +3,7 @@ package com.qingmei2.module.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
 

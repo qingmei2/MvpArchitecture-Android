@@ -4,10 +4,11 @@ import com.qingmei2.module.http.entity.UserInfo;
 
 import java.util.concurrent.TimeUnit;
 
-import io.rx_cache.DynamicKey;
-import io.rx_cache.EvictDynamicKey;
-import io.rx_cache.LifeCache;
-import rx.Observable;
+import io.reactivex.Observable;
+import io.rx_cache2.DynamicKey;
+import io.rx_cache2.EvictDynamicKey;
+import io.rx_cache2.LifeCache;
+
 
 /**
  * Created by QingMei on 2017/8/17.

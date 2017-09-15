@@ -12,7 +12,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import rx.Observable;
+import io.reactivex.ObservableTransformer;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyBoolean;
@@ -32,7 +32,7 @@ public class HomeModelTest {
 
     private HomeModel homeModel;
 
-    private Observable.Transformer<UserInfo, UserInfo> transformer = userInfo -> userInfo;
+    private ObservableTransformer<UserInfo, UserInfo> transformer = userInfo -> userInfo;
     private MockRetrofitHelper retrofitHelper;
 
     @Before
@@ -54,8 +54,7 @@ public class HomeModelTest {
         retrofitHelper.setPath(MockAssets.USER_JSON);//mock server数据
 
         UserInfo userInfo = homeModel.requestUserInfo("qingmei2")
-                .toBlocking()
-                .single();
+                .blockingFirst();
 
         assertEquals(userInfo.getName(), "青梅");
         assertEquals(userInfo.getLogin(), "qingmei2");

@@ -3,7 +3,7 @@ package com.qingmei2.module.http.cache;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import io.rx_cache.internal.RxCache;
+import io.rx_cache2.internal.RxCache;
 import lombok.Getter;
 
 @Singleton

@@ -7,7 +7,7 @@ import org.json.JSONException;
 import java.net.ConnectException;
 import java.text.ParseException;
 
-import retrofit2.adapter.rxjava.HttpException;
+import retrofit2.adapter.rxjava2.HttpException;
 
 
 /**
