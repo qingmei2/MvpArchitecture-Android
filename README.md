@@ -4,9 +4,9 @@ MVP模式的开发框架。
 
 ### 网络层：
 
-HTTP : Rxjava + Retrofit2 + Okhttp
+HTTP : Rxjava2 + Retrofit2 + Okhttp
 
-ImageLoader:Glide
+ImageLoader:Glide v4
 
 Cache: RxCache
 
@@ -16,7 +16,7 @@ JavaBean: lombok
 
 Java8：Stream + Lambda
 
-Dependencies Injection: Dagger2-Android
+Dependencies Injection: DaggerAndroid
 
 ### UI层：
 
