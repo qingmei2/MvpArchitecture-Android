@@ -5,7 +5,7 @@ package com.qingmei2.module.mocks;
  * desc:
  */
 
-public interface MockAssets {
+public interface TestAssets {
 
     //相对路径
     String BASE_PATH = "module/src/test/java/com/qingmei2/module/mocks/result";

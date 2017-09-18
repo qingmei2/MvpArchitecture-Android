@@ -16,7 +16,7 @@ import java.io.UnsupportedEncodingException;
  * desc:
  */
 
-public class MockAssestsReader {
+public class TestAssestsReader {
 
 
     public static String readFile(String path) {

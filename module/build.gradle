@@ -36,7 +36,7 @@ final retrofit_version = '2.3.0'
 final okhttp_version = '3.9.0'
 final lombok_version = '1.16.16'
 final butterKnife_version = '9.0.0-SNAPSHOT'
-final support_version = '26.0.2'
+final support_version = '26.1.0'
 final espresso_version = '2.2.2'
 final glide_version = '4.1.1'
 

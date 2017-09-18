@@ -2,8 +2,9 @@ package com.qingmei2.module.mvp.presenter;
 
 import com.google.gson.Gson;
 import com.qingmei2.module.http.entity.UserInfo;
-import com.qingmei2.module.mocks.MockAssestsReader;
-import com.qingmei2.module.mocks.MockAssets;
+import com.qingmei2.module.mocks.TestAssestsReader;
+import com.qingmei2.module.mocks.TestAssets;
+import com.qingmei2.module.mocks.TestRxTransformer;
 import com.qingmei2.module.mvp.contract.HomeContract;
 
 import org.junit.Before;
@@ -12,11 +13,12 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import io.reactivex.Observable;
+import io.reactivex.Maybe;
 
 import static junit.framework.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
@@ -40,14 +42,15 @@ public class HomePresenterTest {
         MockitoAnnotations.initMocks(this);
 
         presenter = spy(new HomePresenter(view, model));
+        doReturn(new TestRxTransformer<>()).when(presenter).bindView_maybe(view);
     }
 
     @Test
     public void requestUserInfo_success() throws Exception {
-        final String s = MockAssestsReader.readFile(MockAssets.USER_JSON);
+        final String s = TestAssestsReader.readFile(TestAssets.USER_JSON);
         final UserInfo userInfo = new Gson().fromJson(s, UserInfo.class);
 
-        when(model.requestUserInfo(anyString())).thenReturn(Observable.just(userInfo));
+        when(model.requestUserInfo(anyString())).thenReturn(Maybe.just(userInfo));
 
         presenter.requestUserInfo("qingmei2");
 
@@ -61,10 +64,10 @@ public class HomePresenterTest {
 
     @Test
     public void requestUserInfo_failed_nameEmpty() throws Exception {
-        final String s = MockAssestsReader.readFile(MockAssets.USER_JSON_ERROR);
+        final String s = TestAssestsReader.readFile(TestAssets.USER_JSON_ERROR);
         final UserInfo userInfo = new Gson().fromJson(s, UserInfo.class);
 
-        when(model.requestUserInfo(anyString())).thenReturn(Observable.just(userInfo));
+        when(model.requestUserInfo(anyString())).thenReturn(Maybe.just(userInfo));
 
         presenter.requestUserInfo("qingmei2");
 

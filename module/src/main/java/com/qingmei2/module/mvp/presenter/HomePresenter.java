@@ -2,6 +2,7 @@ package com.qingmei2.module.mvp.presenter;
 
 import com.annimon.stream.Optional;
 import com.qingmei2.module.base.BasePresenter;
+import com.qingmei2.module.http.entity.UserInfo;
 import com.qingmei2.module.mvp.contract.HomeContract;
 
 import javax.inject.Inject;
@@ -21,9 +22,10 @@ public class HomePresenter extends BasePresenter<HomeContract.View, HomeContract
     @Override
     public void requestUserInfo(String userName) {
         mModel.requestUserInfo(userName)
-                .compose(bindView(mRootView))
+                .compose(bindView_maybe(mRootView))
                 .subscribe(info -> Optional.ofNullable(info)
-                                .ifPresentOrElse(userInfo -> mRootView.onGetUserInfo(userInfo)
+                                .map(UserInfo::getLogin)
+                                .ifPresentOrElse(image -> mRootView.onGetUserInfo(info)
                                         , () -> mRootView.onError("用户信息为空"))
                         , e -> mRootView.onError("请求出现异常"));
     }

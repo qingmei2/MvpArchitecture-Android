@@ -3,7 +3,7 @@ package com.qingmei2.module.mocks;
 
 /**
  * Created by QingMei on 2017/6/27.
- * desc:
+ * desc: the antiquated code
  */
 
 public class MockRxUnitTestTools {

@@ -17,7 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * desc:
  */
 
-public class MockRetrofitHelper {
+public class TestRetrofit {
     public <T> T create(Class<T> clazz) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(new MockInterceptor())
@@ -45,7 +45,7 @@ public class MockRetrofitHelper {
         @Override
         public Response intercept(Chain chain) throws IOException {
             // 模拟网络数据
-            String content = MockAssestsReader.readFile(path);
+            String content = TestAssestsReader.readFile(path);
 
             ResponseBody body = ResponseBody.create(MediaType.parse("application/x-www-form-urlencoded"), content);
 
