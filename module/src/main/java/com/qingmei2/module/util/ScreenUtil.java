@@ -14,6 +14,9 @@ import java.lang.reflect.Field;
 
 public class ScreenUtil {
 
+    private ScreenUtil() {
+    }
+
     public static LayoutInflater layoutInflater(Context context) {
         return (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }

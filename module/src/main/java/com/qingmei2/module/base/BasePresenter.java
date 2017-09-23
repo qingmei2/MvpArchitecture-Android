@@ -39,22 +39,22 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
     }
 
     @VisibleForTesting
-    public <T> MaybeTransformer<T, T> bindView_maybe(IView view) {
-        return RxUtils.bindView_maybe(view);
+    public <T> MaybeTransformer<T, T> bindViewMaybe(IView view) {
+        return RxUtils.bindViewMaybe(view);
     }
 
     @VisibleForTesting
-    public <T> ObservableTransformer<T, T> bindView_observable(IView view) {
-        return RxUtils.bindView_observable(view);
+    public <T> ObservableTransformer<T, T> bindViewObservable(IView view) {
+        return RxUtils.bindViewObservable(view);
     }
 
     @VisibleForTesting
-    public <T> FlowableTransformer<T, T> bindView_flowable(IView view) {
-        return RxUtils.bindView_flowable(view);
+    public <T> FlowableTransformer<T, T> bindViewFlowable(IView view) {
+        return RxUtils.bindViewFlowable(view);
     }
 
     @VisibleForTesting
-    public <T> SingleTransformer<T, T> bindView_single(IView view) {
-        return RxUtils.bindView_single(view);
+    public <T> SingleTransformer<T, T> bindViewSingle(IView view) {
+        return RxUtils.bindViewSingle(view);
     }
 }

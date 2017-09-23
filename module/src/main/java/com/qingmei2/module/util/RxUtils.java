@@ -18,6 +18,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class RxUtils {
 
+    private RxUtils() {
+    }
+
     public static <T> LifecycleTransformer<T> bindToLifecycle(IView view) {
         if (view instanceof RxAppCompatActivity) {
             return ((RxAppCompatActivity) view).bindToLifecycle();
@@ -28,44 +31,44 @@ public class RxUtils {
         }
     }
 
-    public static <T> MaybeTransformer<T, T> bindView_maybe(IView view) {
+    public static <T> MaybeTransformer<T, T> bindViewMaybe(IView view) {
         return bindToLifecycle(view);
     }
 
-    public static <T> ObservableTransformer<T, T> bindView_observable(IView view) {
+    public static <T> ObservableTransformer<T, T> bindViewObservable(IView view) {
         return bindToLifecycle(view);
     }
 
-    public static <T> SingleTransformer<T, T> bindView_single(IView view) {
+    public static <T> SingleTransformer<T, T> bindViewSingle(IView view) {
         return bindToLifecycle(view);
     }
 
-    public static <T> FlowableTransformer<T, T> bindView_flowable(IView view) {
+    public static <T> FlowableTransformer<T, T> bindViewFlowable(IView view) {
         return bindToLifecycle(view);
     }
 
-    public static <T> MaybeTransformer<T, T> switchThread_maybe() {
+    public static <T> MaybeTransformer<T, T> switchThreadMaybe() {
         return maybe ->
                 maybe
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public static <T> ObservableTransformer<T, T> switchThread_observable() {
+    public static <T> ObservableTransformer<T, T> switchThreadObservable() {
         return observable ->
                 observable
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public static <T> SingleTransformer<T, T> switchThread_single() {
+    public static <T> SingleTransformer<T, T> switchThreadSingle() {
         return single ->
                 single
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public static <T> FlowableTransformer<T, T> switchThread_flowable() {
+    public static <T> FlowableTransformer<T, T> switchThreadFlowable() {
         return flowable ->
                 flowable
                         .subscribeOn(Schedulers.io())

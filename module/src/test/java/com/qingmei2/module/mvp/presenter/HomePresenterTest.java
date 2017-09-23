@@ -42,7 +42,7 @@ public class HomePresenterTest {
         MockitoAnnotations.initMocks(this);
 
         presenter = spy(new HomePresenter(view, model));
-        doReturn(new TestRxTransformer<>()).when(presenter).bindView_maybe(view);
+        doReturn(new TestRxTransformer<>()).when(presenter).bindViewMaybe(view);
     }
 
     @Test
