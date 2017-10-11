@@ -3,7 +3,7 @@ apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
 
     defaultConfig {
         minSdkVersion 16
@@ -38,7 +38,7 @@ final lombok_version = '1.16.16'
 final butterKnife_version = '9.0.0-SNAPSHOT'
 final support_version = '26.1.0'
 final espresso_version = '2.2.2'
-final glide_version = '4.1.1'
+final glide_version = '4.2.0'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
