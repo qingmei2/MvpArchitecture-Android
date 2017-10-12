@@ -1,18 +1,19 @@
 package com.qingmei2.module.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.qingmei2.module.di.component.AppComponent;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import dagger.android.support.AndroidSupportInjection;
 
 /**
  * Created by QingMei on 2017/8/14.
@@ -29,9 +30,9 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        mRootView = initView(container);
+        mRootView = LayoutInflater.from(getContext()).inflate(getLayoutRes(), container, false);
         mUnbinder = ButterKnife.bind(this, mRootView);
-        setupViews();
+        initView();
         return mRootView;
     }
 
@@ -42,9 +43,14 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        AndroidSupportInjection.inject(this);
+        super.onAttach(activity);
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        componentInject();
     }
 
     @Override
@@ -66,17 +72,11 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
         super.onDestroy();
     }
 
-    protected abstract void setupViews();
-
-    protected void componentInject() {
-
-    }
-
-    protected abstract void setupFragmentComponent(AppComponent appComponent);
-
-    protected abstract View initView(ViewGroup container);
+    protected abstract void initView();
 
     protected abstract void initData();
+
+    protected abstract int getLayoutRes();
 
     @Override
     public void showLoading() {
