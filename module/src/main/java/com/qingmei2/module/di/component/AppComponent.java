@@ -1,8 +1,8 @@
-package com.qingmei2.module.di;
+package com.qingmei2.module.di.component;
 
 import com.google.gson.Gson;
 import com.qingmei2.module.base.BaseApplication;
-import com.qingmei2.module.di.module.AllActivitysModule;
+import com.qingmei2.module.di.module.ActivitiesModule;
 import com.qingmei2.module.di.module.AppModule;
 import com.qingmei2.module.di.module.CacheModule;
 import com.qingmei2.module.di.module.GlobalConfigModule;
@@ -30,7 +30,7 @@ import okhttp3.OkHttpClient;
         GlobalConfigModule.class,
         ServiceModule.class,
         CacheModule.class,
-        AllActivitysModule.class
+        ActivitiesModule.class
 })
 public interface AppComponent {
 
