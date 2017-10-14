@@ -34,7 +34,7 @@ android {
 final dagger_version = '2.11'
 final retrofit_version = '2.3.0'
 final okhttp_version = '3.9.0'
-final lombok_version = '1.16.16'
+final lombok_version = '1.16.18'
 final butterKnife_version = '9.0.0-SNAPSHOT'
 final support_version = '26.1.0'
 final espresso_version = '2.2.2'
