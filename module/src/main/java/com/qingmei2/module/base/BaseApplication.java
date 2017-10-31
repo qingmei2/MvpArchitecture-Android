@@ -2,6 +2,10 @@ package com.qingmei2.module.base;
 
 import android.app.Activity;
 import android.app.Application;
+import android.app.Fragment;
+import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.ContentProvider;
 import android.support.v4.content.ContextCompat;
 
 import com.qingmei2.module.di.component.DaggerAppComponent;
@@ -18,6 +22,11 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
+import dagger.android.HasBroadcastReceiverInjector;
+import dagger.android.HasContentProviderInjector;
+import dagger.android.HasFragmentInjector;
+import dagger.android.HasServiceInjector;
+import dagger.android.support.HasSupportFragmentInjector;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -29,10 +38,25 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * desc:
  */
 
-public class BaseApplication extends Application implements HasActivityInjector {
+public class BaseApplication extends Application implements HasActivityInjector,
+        HasBroadcastReceiverInjector,
+        HasFragmentInjector,
+        HasServiceInjector,
+        HasContentProviderInjector,
+        HasSupportFragmentInjector {
 
     @Inject
-    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
+    DispatchingAndroidInjector<Activity> activityInjector;
+    @Inject
+    DispatchingAndroidInjector<Fragment> fragmentInjector;
+    @Inject
+    DispatchingAndroidInjector<android.support.v4.app.Fragment> supportFragmentInjector;
+    @Inject
+    DispatchingAndroidInjector<BroadcastReceiver> broadcastReceiverInjector;
+    @Inject
+    DispatchingAndroidInjector<Service> serviceInjector;
+    @Inject
+    DispatchingAndroidInjector<ContentProvider> contentProviderInjector;
 
     private static BaseApplication instance;
 
@@ -46,10 +70,10 @@ public class BaseApplication extends Application implements HasActivityInjector 
         BaseApplication.instance = this;
         DaggerAppComponent.builder()
                 .cacheModule(getCacheModule())
-                .appModule(getAppModule())                      //注入application
-                .globalConfigModule(getGlobalConfigModule())    //注入全局配置
-                .httpClientModule(getHttpClientModule())        //注入http配置
-                .serviceModule(getServiceModule())              //注入所有Service
+                .appModule(getAppModule())
+                .globalConfigModule(getGlobalConfigModule())
+                .httpClientModule(getHttpClientModule())
+                .serviceModule(getServiceModule())
                 .build()
                 .inject(this);
     }
@@ -85,16 +109,41 @@ public class BaseApplication extends Application implements HasActivityInjector 
         return new ServiceModule();
     }
 
-    @Override
-    public AndroidInjector<Activity> activityInjector() {
-        return dispatchingAndroidInjector;
-    }
-
     public static BaseApplication getInstance() {
         return instance;
     }
 
     public CacheModule getCacheModule() {
         return new CacheModule(ContextCompat.getExternalCacheDirs(this)[0]);
+    }
+
+    @Override
+    public AndroidInjector<Activity> activityInjector() {
+        return activityInjector;
+    }
+
+    @Override
+    public AndroidInjector<BroadcastReceiver> broadcastReceiverInjector() {
+        return broadcastReceiverInjector;
+    }
+
+    @Override
+    public AndroidInjector<ContentProvider> contentProviderInjector() {
+        return contentProviderInjector;
+    }
+
+    @Override
+    public AndroidInjector<Fragment> fragmentInjector() {
+        return fragmentInjector;
+    }
+
+    @Override
+    public AndroidInjector<Service> serviceInjector() {
+        return serviceInjector;
+    }
+
+    @Override
+    public AndroidInjector<android.support.v4.app.Fragment> supportFragmentInjector() {
+        return supportFragmentInjector;
     }
 }
