@@ -1,5 +1,7 @@
 package com.qingmei2.module.mvp.presenter;
 
+import android.annotation.SuppressLint;
+
 import com.annimon.stream.Optional;
 import com.qingmei2.module.base.BasePresenter;
 import com.qingmei2.module.http.entity.UserInfo;
@@ -19,6 +21,7 @@ public class HomePresenter extends BasePresenter<HomeContract.View, HomeContract
         super(rootView, model);
     }
 
+    @SuppressLint("VisibleForTests")
     @Override
     public void requestUserInfo(String userName) {
         mModel.requestUserInfo(userName)

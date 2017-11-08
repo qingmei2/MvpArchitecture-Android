@@ -17,8 +17,11 @@ import io.reactivex.SingleTransformer;
 
 public class BasePresenter<V extends IView, M extends IModel> implements IPresenter {
 
-    protected V mRootView;
-    protected M mModel;
+    @VisibleForTesting
+    public V mRootView;
+
+    @VisibleForTesting
+    public M mModel;
 
     public BasePresenter(V rootView, M model) {
         this.mRootView = rootView;

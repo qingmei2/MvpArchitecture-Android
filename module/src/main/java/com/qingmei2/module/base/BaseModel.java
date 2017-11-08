@@ -1,5 +1,7 @@
 package com.qingmei2.module.base;
 
+import android.support.annotation.VisibleForTesting;
+
 import com.qingmei2.module.http.base.BaseServiceManager;
 import com.qingmei2.module.http.cache.CacheProviders;
 
@@ -15,7 +17,8 @@ public class BaseModel<S extends BaseServiceManager> implements IModel {
     /**
      * Retrofit Service Manager
      */
-    protected S serviceManager;
+    @VisibleForTesting
+    public S serviceManager;
 
     @Inject
     protected CacheProviders cacheProviders;
@@ -30,4 +33,5 @@ public class BaseModel<S extends BaseServiceManager> implements IModel {
     public void onDestroy() {
         serviceManager = null;
     }
+
 }
