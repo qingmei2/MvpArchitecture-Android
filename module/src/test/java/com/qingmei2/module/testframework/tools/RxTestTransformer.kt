@@ -1,4 +1,4 @@
-package com.qingmei2.module.testframework
+package com.qingmei2.module.testframework.tools
 
 import io.reactivex.*
 import org.reactivestreams.Publisher
@@ -7,7 +7,7 @@ import org.reactivestreams.Publisher
  * Created by QingMei on 2017/11/8.
  * desc:
  */
-class TestRxTransformer<T> : ObservableTransformer<T, T>,
+class RxTestTransformer<T> : ObservableTransformer<T, T>,
         FlowableTransformer<T, T>,
         SingleTransformer<T, T>,
         MaybeTransformer<T, T>,

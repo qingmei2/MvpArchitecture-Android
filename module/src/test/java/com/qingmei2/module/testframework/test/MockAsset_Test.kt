@@ -1,6 +1,6 @@
 package com.qingmei2.module.testframework.test
 
-import com.qingmei2.module.testframework.mocks.MockAssest
+import com.qingmei2.module.testframework.tools.MockAssest
 import io.reactivex.Observable
 import org.junit.Test
 
@@ -8,14 +8,14 @@ import org.junit.Test
  * Created by QingMei on 2017/11/7.
  * desc:
  */
-class MockAssetTest {
+class MockAsset_Test {
 
     @Test
     fun assetTest() {
         val content = MockAssest.readFile(MockAssest.USER_DATA)
         Observable.just(content)
                 .test()
-                .assertValue("{\n" + "    \"login\": \"qingmei2\",\n" + "    \"name\": \"qingmei\"\n" + "}")
+                .assertValue("{\n" + "    \"login\": \"login\",\n" + "    \"name\": \"name\"\n" + "}")
     }
 
 }

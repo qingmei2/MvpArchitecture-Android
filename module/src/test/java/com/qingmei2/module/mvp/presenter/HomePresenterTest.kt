@@ -4,9 +4,9 @@ import com.google.gson.Gson
 import com.nhaarman.mockito_kotlin.*
 import com.qingmei2.module.http.entity.UserInfo
 import com.qingmei2.module.mvp.contract.HomeContract
-import com.qingmei2.module.testframework.TestRxTransformer
+import com.qingmei2.module.testframework.tools.RxTestTransformer
 import com.qingmei2.module.testframework.basekt.BaseTestPresenter
-import com.qingmei2.module.testframework.mocks.MockAssest
+import com.qingmei2.module.testframework.tools.MockAssest
 import io.reactivex.Maybe
 import org.junit.Before
 import org.junit.Test
@@ -28,7 +28,7 @@ class HomePresenterTest() : BaseTestPresenter() {
     @Before
     fun setUp() {
         presenter = spy(presenter)
-        doReturn(TestRxTransformer<Any>()).whenever(presenter).bindViewMaybe<Any>(view)
+        doReturn(RxTestTransformer<Any>()).whenever(presenter).bindViewMaybe<Any>(view)
     }
 
     @Test

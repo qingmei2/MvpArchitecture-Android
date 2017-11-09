@@ -1,4 +1,4 @@
-package com.qingmei2.module.testframework.mocks
+package com.qingmei2.module.testframework.tools
 
 import okhttp3.*
 import retrofit2.Retrofit

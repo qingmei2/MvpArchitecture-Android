@@ -6,10 +6,10 @@ import com.nhaarman.mockito_kotlin.spy
 import com.nhaarman.mockito_kotlin.whenever
 import com.qingmei2.module.http.entity.UserInfo
 import com.qingmei2.module.http.service.UserInfoService
-import com.qingmei2.module.testframework.TestRxTransformer
+import com.qingmei2.module.testframework.tools.RxTestTransformer
 import com.qingmei2.module.testframework.basekt.BaseTestModel
-import com.qingmei2.module.testframework.mocks.MockAssest
-import com.qingmei2.module.testframework.mocks.MockRetrofit
+import com.qingmei2.module.testframework.tools.MockAssest
+import com.qingmei2.module.testframework.tools.MockRetrofit
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyBoolean
@@ -31,7 +31,7 @@ class HomeModelTest() : BaseTestModel() {
         homeModel = spy(homeModel)
         val service = retrofit.create(UserInfoService::class.java)
         whenever(homeModel.serviceManager.userInfoService).thenReturn(service)
-        doReturn(TestRxTransformer<UserInfo>()).whenever(homeModel).getUserInfoCache(anyString(), anyBoolean())
+        doReturn(RxTestTransformer<UserInfo>()).whenever(homeModel).getUserInfoCache(anyString(), anyBoolean())
     }
 
     @Test
