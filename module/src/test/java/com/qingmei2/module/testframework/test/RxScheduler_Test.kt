@@ -1,9 +1,9 @@
 package com.qingmei2.module.testframework.test
 
-import com.qingmei2.module.testframework.tools.RxTestTools
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import java.util.concurrent.TimeUnit
 
@@ -12,11 +12,15 @@ import java.util.concurrent.TimeUnit
  * desc:
  */
 
-class RxTestTools_Test {
+class RxScheduler_Test {
+
+    @Rule
+    @JvmField
+
 
     @Before
     fun setUp() {
-        RxTestTools.asyncToSync()
+
     }
 
     @Test
