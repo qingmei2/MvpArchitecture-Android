@@ -1,6 +1,8 @@
 package com.qingmei2.module.di.module;
 
 import com.qingmei2.module.base.BaseApplication;
+import com.qingmei2.module.di.module.sheduler.AppSchedulerProvider;
+import com.qingmei2.module.di.module.sheduler.SchedulerProvider;
 
 import javax.inject.Singleton;
 
@@ -26,4 +28,9 @@ public class AppModule {
         return application;
     }
 
+    @Singleton
+    @Provides
+    public SchedulerProvider provideSchedulers() {
+        return new AppSchedulerProvider();
+    }
 }

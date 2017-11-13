@@ -14,8 +14,6 @@ import io.reactivex.MaybeTransformer;
 import io.rx_cache2.DynamicKey;
 import io.rx_cache2.EvictDynamicKey;
 
-import static com.qingmei2.module.util.RxUtils.switchThreadMaybe;
-
 /**
  * Created by QingMei on 2017/8/14.
  * desc:
@@ -32,14 +30,15 @@ public class HomeModel extends BaseModel<ServiceManager> implements HomeContract
     public Maybe<UserInfo> requestUserInfo(final String userName) {
         return serviceManager.getUserInfoService()
                 .getUserInfo(userName)
-                .compose(getUserInfoCache(userName, false));
+                .compose(getUserInfoCache(userName, false))
+                .subscribeOn(schedulers.io())
+                .observeOn(schedulers.ui());
     }
 
     @VisibleForTesting
     public MaybeTransformer<UserInfo, UserInfo> getUserInfoCache(final String dynamicKey, final boolean refresh) {
         return maybe -> cacheProviders
                 .getUserInfoCacheProviders()
-                .getUserInfo(maybe, new DynamicKey(dynamicKey), new EvictDynamicKey(refresh))
-                .compose(switchThreadMaybe());
+                .getUserInfo(maybe, new DynamicKey(dynamicKey), new EvictDynamicKey(refresh));
     }
 }

@@ -4,9 +4,9 @@ import com.google.gson.Gson
 import com.nhaarman.mockito_kotlin.*
 import com.qingmei2.module.http.entity.UserInfo
 import com.qingmei2.module.mvp.contract.HomeContract
-import com.qingmei2.module.testframework.tools.RxTestTransformer
 import com.qingmei2.module.testframework.basekt.BaseTestPresenter
 import com.qingmei2.module.testframework.tools.MockAssest
+import com.qingmei2.module.testframework.tools.RxTestTransformer
 import io.reactivex.Maybe
 import org.junit.Before
 import org.junit.Test
@@ -17,7 +17,7 @@ import org.mockito.ArgumentMatchers.anyString
  * Created by QingMei on 2017/11/8.
  * desc:
  */
-class HomePresenterTest() : BaseTestPresenter() {
+class HomePresenterTest : BaseTestPresenter() {
 
     val view: HomeContract.View = mock()
 

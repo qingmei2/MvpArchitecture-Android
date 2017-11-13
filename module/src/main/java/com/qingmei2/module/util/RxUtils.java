@@ -9,8 +9,6 @@ import io.reactivex.FlowableTransformer;
 import io.reactivex.MaybeTransformer;
 import io.reactivex.ObservableTransformer;
 import io.reactivex.SingleTransformer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Glooory on 17/5/15.
@@ -45,33 +43,5 @@ public class RxUtils {
 
     public static <T> FlowableTransformer<T, T> bindViewFlowable(IView view) {
         return bindToLifecycle(view);
-    }
-
-    public static <T> MaybeTransformer<T, T> switchThreadMaybe() {
-        return maybe ->
-                maybe
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public static <T> ObservableTransformer<T, T> switchThreadObservable() {
-        return observable ->
-                observable
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public static <T> SingleTransformer<T, T> switchThreadSingle() {
-        return single ->
-                single
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    public static <T> FlowableTransformer<T, T> switchThreadFlowable() {
-        return flowable ->
-                flowable
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread());
     }
 }

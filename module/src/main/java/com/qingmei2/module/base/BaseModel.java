@@ -2,6 +2,7 @@ package com.qingmei2.module.base;
 
 import android.support.annotation.VisibleForTesting;
 
+import com.qingmei2.module.di.module.sheduler.SchedulerProvider;
 import com.qingmei2.module.http.base.BaseServiceManager;
 import com.qingmei2.module.http.cache.CacheProviders;
 
@@ -22,12 +23,15 @@ public class BaseModel<S extends BaseServiceManager> implements IModel {
 
     @Inject
     protected CacheProviders cacheProviders;
+
     @Inject
-    protected CacheProviders cacheProviders2;
+    @VisibleForTesting
+    public SchedulerProvider schedulers;
 
     public BaseModel(S serviceManager) {
         this.serviceManager = serviceManager;
     }
+
 
     @Override
     public void onDestroy() {
