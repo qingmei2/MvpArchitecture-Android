@@ -2,7 +2,7 @@
 
 MVP模式的开发框架。
 
-开发环境：AndroidStudio 3.0 Beta7 
+开发环境：AndroidStudio 3.0
 
 ### 网络层：
 
