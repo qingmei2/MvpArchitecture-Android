@@ -13,4 +13,8 @@ open class BaseTestModel {
     @JvmField
     val rxRule = RxSchedulerRule()
 
+    internal fun triggerActions() {
+        rxRule.getScheduler().triggerActions()
+    }
+
 }

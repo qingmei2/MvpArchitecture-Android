@@ -47,7 +47,7 @@ class HomeModelTest : BaseTestModel() {
         val maybe = homeModel.requestUserInfo("qingmei2")
         maybe.subscribe(testObserver)
 
-        rxRule.getScheduler().triggerActions()
+        triggerActions()
 
         testObserver.assertValue { it -> it.login == "login" && it.name == "name" }
     }
