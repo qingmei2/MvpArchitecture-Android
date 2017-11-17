@@ -24,12 +24,10 @@ class RxSchedulerRule : TestRule {
                 RxJavaPlugins.setComputationSchedulerHandler { testScheduler }
                 RxJavaPlugins.setNewThreadSchedulerHandler { testScheduler }
                 RxJavaPlugins.setSingleSchedulerHandler { testScheduler }
-//                RxAndroidPlugins.setInitMainThreadSchedulerHandler { testScheduler }
                 try {
                     base?.evaluate()
                 } finally {
                     RxJavaPlugins.reset()
-//                    RxAndroidPlugins.reset()
                 }
             }
         }

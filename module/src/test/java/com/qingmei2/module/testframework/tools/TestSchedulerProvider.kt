@@ -1,7 +1,7 @@
 package com.qingmei2.module.testframework.tools
 
 import com.qingmei2.module.di.module.sheduler.SchedulerProvider
-import io.reactivex.schedulers.TestScheduler
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by QingMei on 2017/11/13.
@@ -9,9 +9,7 @@ import io.reactivex.schedulers.TestScheduler
  */
 class TestSchedulerProvider : SchedulerProvider {
 
-    val testScheduler: TestScheduler = TestScheduler()
+    override fun io() = Schedulers.io()
 
-    override fun io() = testScheduler
-
-    override fun ui() = testScheduler
+    override fun ui() = Schedulers.io()
 }
