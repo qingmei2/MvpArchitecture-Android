@@ -1,9 +1,10 @@
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'kotlin-android'
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.0'
+    buildToolsVersion '27.0.1'
     defaultConfig {
         applicationId "com.qingmei2.mvparchitecture"
         minSdkVersion 16
@@ -34,7 +35,11 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'jsr305'
     })
-    compile 'com.android.support:support-annotations:27.0.0'
+    compile 'com.android.support:support-annotations:27.0.1'
     testImplementation 'junit:junit:4.12'
     implementation project(':module')
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

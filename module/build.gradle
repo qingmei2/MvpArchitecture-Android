@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.0'
+    buildToolsVersion '27.0.1'
 
     defaultConfig {
         minSdkVersion 16
@@ -38,7 +38,7 @@ final retrofit_version = '2.3.0'
 final okhttp_version = '3.9.0'
 final lombok_version = '1.16.18'
 final butterKnife_version = '9.0.0-SNAPSHOT'
-final support_version = '27.0.0'
+final support_version = '27.0.1'
 final espresso_version = '2.2.2'
 final glide_version = '4.2.0'
 
@@ -118,4 +118,8 @@ dependencies {
         exclude group: 'org.glassfish', module: 'javax.annotation'
     }
     implementation 'com.github.VictorAlbertos.Jolyglot:gson:0.0.3'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
