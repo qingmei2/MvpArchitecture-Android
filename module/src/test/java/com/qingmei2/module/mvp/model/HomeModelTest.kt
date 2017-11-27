@@ -27,7 +27,7 @@ class HomeModelTest : BaseTestModel() {
 
     private var homeModel: HomeModel = HomeModel(mock())
 
-    val provider = TestSchedulerProvider()
+    private val provider = TestSchedulerProvider()
 
     @Before
     fun setUp() {
