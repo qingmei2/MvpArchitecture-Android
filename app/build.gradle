@@ -1,5 +1,5 @@
 apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.android.application'
 
 android {
@@ -17,14 +17,36 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     buildTypes {
         release {
+            minifyEnabled true
+            debuggable false
+            jniDebuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        debug{
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+
+    flavorDimensions 'tier'
+
+    productFlavors {
+        staging {
+            dimension 'tier'
+        }
+
+        production {
+            dimension 'tier'
+        }
+    }
+
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        if (names.contains("staging") && variant.buildType.name == "release") {
+            setIgnore(true)
         }
     }
 }
@@ -38,7 +60,7 @@ dependencies {
     compile 'com.android.support:support-annotations:27.0.1'
     testImplementation 'junit:junit:4.12'
     implementation project(':module')
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 repositories {
     mavenCentral()
