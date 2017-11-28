@@ -41,6 +41,10 @@ class RxSchedulerRule : TestRule {
         testScheduler.advanceTimeBy(delayTime, timeUnit)
     }
 
+    fun triggerActions() {
+        testScheduler.triggerActions()
+    }
+
     fun getScheduler(): TestScheduler {
         return testScheduler
     }
