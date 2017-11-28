@@ -19,11 +19,11 @@ import org.mockito.ArgumentMatchers.anyString
  */
 class HomePresenterTest : BaseTestPresenter() {
 
-    val view: HomeContract.View = mock()
+    private val view: HomeContract.View = mock()
 
-    val model: HomeContract.Model = mock()
+    private val model: HomeContract.Model = mock()
 
-    var presenter: HomePresenter = HomePresenter(view, model)
+    private var presenter: HomePresenter = HomePresenter(view, model)
 
     @Before
     fun setUp() {
@@ -32,7 +32,7 @@ class HomePresenterTest : BaseTestPresenter() {
     }
 
     @Test
-    fun requestUserInfo_success() {
+    fun requestUserInfoSuccess() {
 
         val s = MockAssest.readFile(MockAssest.USER_DATA)
         val user = Gson().fromJson(s, UserInfo::class.java)
@@ -42,21 +42,21 @@ class HomePresenterTest : BaseTestPresenter() {
         presenter.requestUserInfo("qingmei2")
 
         val captor: ArgumentCaptor<UserInfo> = ArgumentCaptor.forClass(UserInfo::class.java)
-        verify(view).onGetUserInfo(captor.capture());
-        verify(view, never()).onError(anyString());
+        verify(view).onGetUserInfo(captor.capture())
+        verify(view, never()).onError(anyString())
 
-        assert(user.equals(captor.value))
+        assert(user == captor.value)
     }
 
     @Test
-    fun requestUserInfo_failed_error() {
+    fun requestUserInfoFailedError() {
         val s = MockAssest.readFile(MockAssest.error)
         val user = Gson().fromJson(s, UserInfo::class.java)
         whenever(model.requestUserInfo(anyString())).thenReturn(Maybe.just(user))
 
         presenter.requestUserInfo("qingmei2")
 
-        verify(view, never()).onGetUserInfo(any());
-        verify(view).onError("用户信息为空");
+        verify(view, never()).onGetUserInfo(any())
+        verify(view).onError("用户信息为空")
     }
 }
