@@ -51,7 +51,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
-    implementation project(':Module_Core')
+    implementation project(':module_core')
     implementation rootProject.ext.dependencies["support-annotations"]
     implementation rootProject.ext.dependencies["kotlin-android"]
 }
