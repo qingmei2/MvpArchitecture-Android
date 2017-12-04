@@ -59,7 +59,7 @@ dependencies {
     })
     compile 'com.android.support:support-annotations:27.0.1'
     testImplementation 'junit:junit:4.12'
-    implementation project(':module')
+    implementation project(':Module_Core')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 repositories {
