@@ -2,7 +2,7 @@ package com.qingmei2.module_a.mvp.ui;
 
 import android.widget.Toast;
 
-import com.baronzhang.android.router.annotation.inject.Inject;
+import com.annimon.stream.Optional;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qingmei2.module.base.BaseActivity;
 import com.qingmei2.module.http.entity.UserInfo;
@@ -16,6 +16,8 @@ import com.qingmei2.module_business.router.RouterService;
 
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 public class HomeActivity extends BaseActivity<HomePresenter, ActivityHomeBinding> implements HomeContract.View {
 
     @Override
@@ -23,14 +25,17 @@ public class HomeActivity extends BaseActivity<HomePresenter, ActivityHomeBindin
         return R.layout.activity_home;
     }
 
-    @Inject("userModel")
+    @com.baronzhang.android.router.annotation.inject.Inject("userModel")
     UserModel user;
-    @javax.inject.Inject
+    @Inject
     RouterService router;
 
     @Override
     protected void initData() {
-        b.tvUserInfo.setText("跨module传递的数据:" + user.toString());
+        b.tvUserInfo.setText(Optional.ofNullable(user)
+                .map(UserModel::toString)
+                .map(s -> "跨module传递的数据:" + s)
+                .orElse("跨module传递的数据为空"));
     }
 
     @Override

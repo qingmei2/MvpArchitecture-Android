@@ -1,7 +1,7 @@
 package com.qingmei2.module_a;
 
 import com.qingmei2.module.base.BaseApplication;
-import com.qingmei2.module_a.di.DaggerAAppComponent;
+import com.qingmei2.module_a.di.DaggerModuleAppComponent;
 import com.qingmei2.module_business.di.RouterModule;
 
 /**
@@ -9,11 +9,11 @@ import com.qingmei2.module_business.di.RouterModule;
  * desc:
  */
 
-public class ABaseApplication extends BaseApplication {
+public class ModuleBaseApplication extends BaseApplication {
 
     @Override
     protected void injectApp() {
-        DaggerAAppComponent.builder()
+        DaggerModuleAppComponent.builder()
                 .cacheModule(getCacheModule())
                 .appModule(getAppModule())
                 .globalConfigModule(getGlobalConfigModule())

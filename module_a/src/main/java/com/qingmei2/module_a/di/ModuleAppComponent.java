@@ -31,9 +31,9 @@ import okhttp3.OkHttpClient;
         ServiceModule.class,
         CacheModule.class,
         RouterModule.class,
-        AbstractAActivitiesModule.class
+        AbstractModuleActivitiesModule.class
 })
-public interface AAppComponent {
+public interface ModuleAppComponent {
 
     Gson gson();
 

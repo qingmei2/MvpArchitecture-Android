@@ -77,7 +77,7 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
     //kotlin
     implementation rootProject.ext.dependencies["kotlin-android"]
-    if (isBuildModule.toBoolean()) {
+    if (isBuildAsModule.toBoolean()) {
         implementation project(':module_core')
         implementation project(':module_business')
     } else {
