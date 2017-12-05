@@ -60,6 +60,10 @@ public class BaseApplication extends Application implements HasActivityInjector,
 
     private static BaseApplication instance;
 
+    public static BaseApplication getInstance() {
+        return instance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -68,6 +72,10 @@ public class BaseApplication extends Application implements HasActivityInjector,
 
     private void inject() {
         BaseApplication.instance = this;
+        injectApp();
+    }
+
+    protected void injectApp() {
         DaggerAppComponent.builder()
                 .cacheModule(getCacheModule())
                 .appModule(getAppModule())
@@ -78,11 +86,11 @@ public class BaseApplication extends Application implements HasActivityInjector,
                 .inject(this);
     }
 
-    private AppModule getAppModule() {
+    protected AppModule getAppModule() {
         return new AppModule(this);
     }
 
-    private GlobalConfigModule getGlobalConfigModule() {
+    protected GlobalConfigModule getGlobalConfigModule() {
         return GlobalConfigModule.buidler()
                 .baseurl(Api.BASE_API)
                 //这行代码为log打印网络请求信息，可以考虑在release版中取消该行代码
@@ -101,19 +109,15 @@ public class BaseApplication extends Application implements HasActivityInjector,
                 .build();
     }
 
-    private HttpClientModule getHttpClientModule() {
+    protected HttpClientModule getHttpClientModule() {
         return new HttpClientModule();
     }
 
-    private ServiceModule getServiceModule() {
+    protected ServiceModule getServiceModule() {
         return new ServiceModule();
     }
 
-    public static BaseApplication getInstance() {
-        return instance;
-    }
-
-    public CacheModule getCacheModule() {
+    protected CacheModule getCacheModule() {
         return new CacheModule(ContextCompat.getExternalCacheDirs(this)[0]);
     }
 

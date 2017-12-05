@@ -11,7 +11,6 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
-        classpath 'com.jakewharton:butterknife-gradle-plugin:9.0.0-SNAPSHOT'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application config here; they belong
@@ -25,7 +24,6 @@ allprojects {
         jcenter()
         maven { url "https://jitpack.io" }
         maven { url "https://maven.google.com" }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }//
     }
 }
 

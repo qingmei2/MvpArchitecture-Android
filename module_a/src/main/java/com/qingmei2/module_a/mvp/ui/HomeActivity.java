@@ -1,31 +1,19 @@
 package com.qingmei2.module_a.mvp.ui;
 
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding2.view.RxView;
-import com.qingmei2.module.R;
-import com.qingmei2.module.R2;
 import com.qingmei2.module.base.BaseActivity;
 import com.qingmei2.module.http.entity.UserInfo;
 import com.qingmei2.module.image.GlideApp;
-import com.qingmei2.module.mvp.contract.HomeContract;
-import com.qingmei2.module.mvp.presenter.HomePresenter;
+import com.qingmei2.module_a.R;
+import com.qingmei2.module_a.databinding.ActivityHomeBinding;
+import com.qingmei2.module_a.mvp.contract.HomeContract;
+import com.qingmei2.module_a.mvp.presenter.HomePresenter;
 
 import java.util.concurrent.TimeUnit;
 
-import butterknife.BindView;
-
-public class HomeActivity extends BaseActivity<HomePresenter> implements HomeContract.View {
-
-    @BindView(R2.id.tv_user_info)
-    TextView tvUserInfo;
-    @BindView(R2.id.btn_user_info)
-    Button btnUserInfo;
-    @BindView(R2.id.iv_test)
-    ImageView ivTest;
+public class HomeActivity extends BaseActivity<HomePresenter, ActivityHomeBinding> implements HomeContract.View {
 
     @Override
     protected int getLayoutId() {
@@ -39,18 +27,18 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
 
     @Override
     protected void initView() {
-        RxView.clicks(btnUserInfo)
+        RxView.clicks(b.btnUserInfo)
                 .throttleFirst(500, TimeUnit.MILLISECONDS)
                 .subscribe(v -> presenter.requestUserInfo("qingmei2"));
     }
 
     @Override
     public void onGetUserInfo(UserInfo userInfo) {
-        tvUserInfo.setText("网络请求Login:" + userInfo.toString());
+        b.tvUserInfo.setText("网络请求Login:" + userInfo.toString());
         GlideApp.with(this)
                 .load(userInfo.getAvatarUrl())
                 .circleCrop()
-                .into(ivTest);
+                .into(b.ivTest);
     }
 
     @Override

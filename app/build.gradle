@@ -39,7 +39,9 @@ android {
             dimension 'tier'
         }
     }
-
+    dataBinding {
+        enabled = true
+    }
     variantFilter { variant ->
         def names = variant.flavors*.name
         if (names.contains("staging") && variant.buildType.name == "release") {
@@ -75,7 +77,12 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
 
-    api project(':module_a')
+    if (isBuildModule.toBoolean()) {
+        implementation project(':module_core')
+    } else {
+        implementation project(':module_a')
+    }
+
 }
 repositories {
     mavenCentral()

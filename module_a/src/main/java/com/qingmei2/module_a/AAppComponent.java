@@ -1,4 +1,4 @@
-package com.qingmei2.module.di.component;
+package com.qingmei2.module_a;
 
 import com.google.gson.Gson;
 import com.qingmei2.module.base.BaseApplication;
@@ -8,6 +8,7 @@ import com.qingmei2.module.di.module.GlobalConfigModule;
 import com.qingmei2.module.di.module.HttpClientModule;
 import com.qingmei2.module.di.module.ServiceModule;
 import com.qingmei2.module.http.service.ServiceManager;
+import com.qingmei2.module_a.di.AActivitiesModule;
 
 import javax.inject.Singleton;
 
@@ -29,8 +30,9 @@ import okhttp3.OkHttpClient;
         GlobalConfigModule.class,
         ServiceModule.class,
         CacheModule.class,
+        AActivitiesModule.class
 })
-public interface AppComponent {
+public interface AAppComponent {
 
     Gson gson();
 

@@ -1,6 +1,8 @@
 package com.qingmei2.module.base;
 
 import android.app.Activity;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,8 +13,6 @@ import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import dagger.android.support.AndroidSupportInjection;
 
 /**
@@ -20,10 +20,11 @@ import dagger.android.support.AndroidSupportInjection;
  * desc:
  */
 
-public abstract class BaseFragment<P extends IPresenter> extends RxFragment implements IFragment {
+public abstract class BaseFragment<P extends IPresenter, B extends ViewDataBinding> extends RxFragment implements IFragment {
+
+    protected B b;
 
     protected View mRootView;
-    private Unbinder mUnbinder;
     @Inject
     protected P mPresenter;
 
@@ -31,14 +32,14 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         mRootView = LayoutInflater.from(getContext()).inflate(getLayoutRes(), container, false);
-        mUnbinder = ButterKnife.bind(this, mRootView);
-        initView();
         return mRootView;
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        b = DataBindingUtil.bind(view);
+        initView(view);
         initData();
     }
 
@@ -55,9 +56,6 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
 
     @Override
     public void onDestroyView() {
-        if (mUnbinder != Unbinder.EMPTY) {
-            mUnbinder.unbind();
-        }
         super.onDestroyView();
     }
 
@@ -68,11 +66,10 @@ public abstract class BaseFragment<P extends IPresenter> extends RxFragment impl
         }
         this.mPresenter = null;
         this.mRootView = null;
-        this.mUnbinder = null;
         super.onDestroy();
     }
 
-    protected abstract void initView();
+    protected abstract void initView(View view);
 
     protected abstract void initData();
 

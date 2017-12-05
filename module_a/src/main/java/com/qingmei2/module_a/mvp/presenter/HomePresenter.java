@@ -5,7 +5,7 @@ import android.annotation.SuppressLint;
 import com.annimon.stream.Optional;
 import com.qingmei2.module.base.BasePresenter;
 import com.qingmei2.module.http.entity.UserInfo;
-import com.qingmei2.module.mvp.contract.HomeContract;
+import com.qingmei2.module_a.mvp.contract.HomeContract;
 
 import javax.inject.Inject;
 

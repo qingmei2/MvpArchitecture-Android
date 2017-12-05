@@ -1,5 +1,7 @@
 package com.qingmei2.module.base;
 
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -7,8 +9,6 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import dagger.android.AndroidInjection;
 
 /**
@@ -16,9 +16,9 @@ import dagger.android.AndroidInjection;
  * desc:
  */
 
-public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActivity implements IActivity {
+public abstract class BaseActivity<P extends IPresenter,B extends ViewDataBinding> extends RxAppCompatActivity implements IActivity {
 
-    private Unbinder mUnbinder;
+    protected B b;
 
     @Inject
     protected P presenter;
@@ -28,7 +28,7 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
         componentInject();
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        mUnbinder = ButterKnife.bind(this);
+        b = DataBindingUtil.setContentView(this, getLayoutId());
         initData();
         initView();
     }
@@ -38,11 +38,7 @@ public abstract class BaseActivity<P extends IPresenter> extends RxAppCompatActi
         if (presenter != null) {
             presenter.onDestroy();
         }
-        if (mUnbinder != Unbinder.EMPTY) {
-            mUnbinder.unbind();
-        }
         this.presenter = null;
-        this.mUnbinder = null;
         super.onDestroy();
     }
 

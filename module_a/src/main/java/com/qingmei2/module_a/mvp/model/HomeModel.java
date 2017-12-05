@@ -5,7 +5,7 @@ import android.support.annotation.VisibleForTesting;
 import com.qingmei2.module.base.BaseModel;
 import com.qingmei2.module.http.entity.UserInfo;
 import com.qingmei2.module.http.service.ServiceManager;
-import com.qingmei2.module.mvp.contract.HomeContract;
+import com.qingmei2.module_a.mvp.contract.HomeContract;
 
 import javax.inject.Inject;
 
