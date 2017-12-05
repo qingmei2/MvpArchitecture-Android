@@ -15,17 +15,17 @@ import io.reactivex.Maybe;
 
 public interface HomeContract {
 
-    public interface View extends IView {
+    interface View extends IView {
         void onGetUserInfo(UserInfo userInfo);
 
         void onError(String errorMassage);
     }
 
-    public interface Presenter extends IPresenter {
+    interface Presenter extends IPresenter {
         void requestUserInfo(String user);
     }
 
-    public interface Model extends IModel {
+    interface Model extends IModel {
         Maybe<UserInfo> requestUserInfo(String userName);
     }
 }

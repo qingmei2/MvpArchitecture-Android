@@ -1,17 +1,18 @@
-package com.qingmei2.module_a;
+package com.qingmei2.mvparchitecture;
 
 import com.qingmei2.module.base.BaseApplication;
+import com.qingmei2.mvparchitecture.di.DaggerAppComponent;
 
 /**
  * Created by QingMei on 2017/12/5.
  * desc:
  */
 
-public class ABaseApplication extends BaseApplication{
+public class AppBaseApplication extends BaseApplication {
 
     @Override
     protected void injectApp() {
-        com.qingmei2.module_a.di.DaggerAAppComponent.builder()
+        DaggerAppComponent.builder()
                 .cacheModule(getCacheModule())
                 .appModule(getAppModule())
                 .globalConfigModule(getGlobalConfigModule())

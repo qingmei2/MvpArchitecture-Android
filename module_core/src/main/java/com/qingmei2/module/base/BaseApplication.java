@@ -8,7 +8,7 @@ import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
 import android.support.v4.content.ContextCompat;
 
-import com.qingmei2.module.di.component.DaggerAppComponent;
+import com.qingmei2.module.di.component.DaggerBaseAppComponent;
 import com.qingmei2.module.di.module.AppModule;
 import com.qingmei2.module.di.module.CacheModule;
 import com.qingmei2.module.di.module.GlobalConfigModule;
@@ -75,8 +75,9 @@ public class BaseApplication extends Application implements HasActivityInjector,
         injectApp();
     }
 
+    //这是类库底层的injectApp代码示例，你应该在你的Module中重写该方法
     protected void injectApp() {
-        DaggerAppComponent.builder()
+        DaggerBaseAppComponent.builder()
                 .cacheModule(getCacheModule())
                 .appModule(getAppModule())
                 .globalConfigModule(getGlobalConfigModule())

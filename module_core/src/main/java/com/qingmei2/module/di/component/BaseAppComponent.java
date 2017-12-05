@@ -30,7 +30,7 @@ import okhttp3.OkHttpClient;
         ServiceModule.class,
         CacheModule.class,
 })
-public interface AppComponent {
+public interface BaseAppComponent {
 
     Gson gson();
 
