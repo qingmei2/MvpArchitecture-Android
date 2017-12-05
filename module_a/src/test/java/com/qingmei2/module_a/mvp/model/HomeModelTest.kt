@@ -17,6 +17,7 @@ import org.junit.Test
 import org.mockito.ArgumentMatchers.anyBoolean
 import org.mockito.ArgumentMatchers.anyString
 
+
 /**
  * Created by QingMei on 2017/11/8.
  * desc:
@@ -28,7 +29,6 @@ class HomeModelTest : BaseTestModel() {
     private var homeModel: HomeModel = HomeModel(mock())
 
     private val provider = TestSchedulerProvider()
-
 
     @Before
     fun setUp() {
