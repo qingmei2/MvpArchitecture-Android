@@ -9,6 +9,7 @@ import com.qingmei2.module.di.module.HttpClientModule;
 import com.qingmei2.module.di.module.ServiceModule;
 import com.qingmei2.module.http.service.ServiceManager;
 import com.qingmei2.module_a.di.AbstractAActivitiesModule;
+import com.qingmei2.module_business.di.RouterModule;
 
 import javax.inject.Singleton;
 
@@ -30,6 +31,7 @@ import okhttp3.OkHttpClient;
         GlobalConfigModule.class,
         ServiceModule.class,
         CacheModule.class,
+        RouterModule.class,
         AbstractAppActivitiesModule.class,
         AbstractAActivitiesModule.class
         //下面应该是所有module对应的所有Activities:

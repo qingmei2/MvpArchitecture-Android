@@ -1,2 +1,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.qingmei2.module_a" />
+    package="com.qingmei2.module_a">
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <activity android:name=".mvp.ui.HomeActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <action android:name="android.intent.action.VIEW" />
+                <data
+                    android:host="com.qingmei2.module_a.homeactivity"
+                    android:scheme="router" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>

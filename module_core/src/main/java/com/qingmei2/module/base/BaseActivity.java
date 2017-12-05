@@ -5,6 +5,7 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.baronzhang.android.router.RouterInjector;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
@@ -25,7 +26,7 @@ public abstract class BaseActivity<P extends IPresenter,B extends ViewDataBindin
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        componentInject();
+        inject();
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         b = DataBindingUtil.setContentView(this, getLayoutId());
@@ -44,8 +45,9 @@ public abstract class BaseActivity<P extends IPresenter,B extends ViewDataBindin
 
     protected abstract int getLayoutId();
 
-    protected void componentInject() {
+    protected void inject() {
         AndroidInjection.inject(this);
+        RouterInjector.inject(this);
     }
 
     protected abstract void initData();

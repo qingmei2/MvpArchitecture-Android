@@ -2,6 +2,7 @@ package com.qingmei2.module_a.mvp.ui;
 
 import android.widget.Toast;
 
+import com.baronzhang.android.router.annotation.inject.Inject;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qingmei2.module.base.BaseActivity;
 import com.qingmei2.module.http.entity.UserInfo;
@@ -10,6 +11,8 @@ import com.qingmei2.module_a.R;
 import com.qingmei2.module_a.databinding.ActivityHomeBinding;
 import com.qingmei2.module_a.mvp.contract.HomeContract;
 import com.qingmei2.module_a.mvp.presenter.HomePresenter;
+import com.qingmei2.module_business.model.UserModel;
+import com.qingmei2.module_business.router.RouterService;
 
 import java.util.concurrent.TimeUnit;
 
@@ -20,9 +23,14 @@ public class HomeActivity extends BaseActivity<HomePresenter, ActivityHomeBindin
         return R.layout.activity_home;
     }
 
+    @Inject("userModel")
+    UserModel user;
+    @javax.inject.Inject
+    RouterService router;
+
     @Override
     protected void initData() {
-
+        b.tvUserInfo.setText("跨module传递的数据:" + user.toString());
     }
 
     @Override

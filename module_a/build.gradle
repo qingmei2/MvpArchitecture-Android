@@ -3,7 +3,8 @@ if(isBuildModule.toBoolean()){
 }else{
     apply plugin: 'com.android.library'
 }
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -69,5 +70,9 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
     annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
 
+    //kotlin
+    implementation rootProject.ext.dependencies["kotlin-android"]
+
     api project(':module_core')
+    api project(':module_business')
 }

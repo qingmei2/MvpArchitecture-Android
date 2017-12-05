@@ -102,7 +102,11 @@ dependencies {
         exclude group: 'org.glassfish', module: 'javax.annotation'
     }
     api rootProject.ext.dependencies["rxCache-Jolyglot"]
-    api rootProject.ext.dependencies["kotlin-android"]
+    //kotlin
+    implementation rootProject.ext.dependencies["kotlin-android"]
+
+    implementation rootProject.ext.dependencies["router"]
+    annotationProcessor rootProject.ext.dependencies["router-compiler"]
 }
 repositories {
     mavenCentral()
