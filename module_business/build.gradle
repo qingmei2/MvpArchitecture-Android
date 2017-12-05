@@ -1,27 +1,26 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
     defaultConfig {
-        applicationId rootProject.ext.android["applicationId"]
         minSdkVersion rootProject.ext.android["minSdkVersion"]
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode rootProject.ext.android["versionCode"]
         versionName rootProject.ext.android["versionName"]
+
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     buildTypes {
         release {
             minifyEnabled true
-            debuggable false
-            jniDebuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -29,30 +28,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    flavorDimensions 'tier'
-
-    productFlavors {
-        staging {
-            dimension 'tier'
-        }
-        production {
-            dimension 'tier'
-        }
-    }
     dataBinding {
         enabled = true
-    }
-    variantFilter { variant ->
-        def names = variant.flavors*.name
-        if (names.contains("staging") && variant.buildType.name == "release") {
-            setIgnore(true)
-        }
     }
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation rootProject.ext.dependencies["appcompat-v7"]
     //Junit
     testImplementation rootProject.ext.dependencies["junit"]
@@ -64,27 +47,17 @@ dependencies {
     androidTestImplementation(rootProject.ext.dependencies["espresso-test-runner"]) {
         exclude module: 'support-annotations'
     }
-    //mockito
-    testImplementation rootProject.ext.dependencies["mockito-kotlin"]
-    //robolectric
-    testImplementation rootProject.ext.dependencies["robolectric"]
-    testImplementation rootProject.ext.dependencies["robolectric-v4"]
+    //kotlin
+    implementation rootProject.ext.dependencies["kotlin-android"]
+    //dagger2
+    implementation rootProject.ext.dependencies["dagger-android"]
+    implementation rootProject.ext.dependencies["dagger-android-support"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+    //lombok
+    compileOnly rootProject.ext.dependencies["lombok"]
+    annotationProcessor rootProject.ext.dependencies["lombok"]
 
     implementation rootProject.ext.dependencies["router"]
     annotationProcessor rootProject.ext.dependencies["router-compiler"]
-    //dagger2
-    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
-    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
-    //kotlin
-    implementation rootProject.ext.dependencies["kotlin-android"]
-    if (isBuildAsModule.toBoolean()) {
-        implementation project(':module_core')
-        implementation project(':module_business')
-    } else {
-        implementation project(':module_a')
-    }
-
-}
-repositories {
-    mavenCentral()
 }

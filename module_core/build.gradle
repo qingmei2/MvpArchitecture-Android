@@ -1,0 +1,113 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+
+        multiDexEnabled true
+        testInstrumentationRunner "com.qingmei2.module.base.BaseAndroidTestJunitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    //Junit
+    testImplementation rootProject.ext.dependencies["junit"]
+    //espresso
+    androidTestImplementation(rootProject.ext.dependencies["espresso-core"]) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+
+    androidTestImplementation(rootProject.ext.dependencies["espresso-contrib"]) {
+        exclude module: 'support-annotations'
+        exclude module: 'support-v4'
+        exclude module: 'design'
+        exclude module: 'recyclerview-v7'
+    }
+    implementation(rootProject.ext.dependencies["espresso-idling-resource"]) {
+        exclude module: 'support-annotations'
+    }
+    androidTestImplementation(rootProject.ext.dependencies["espresso-test-runner"]) {
+        exclude module: 'support-annotations'
+    }
+    androidTestImplementation(rootProject.ext.dependencies["espresso-test-rules"]) {
+        exclude module: 'support-annotations'
+    }
+    //mockito
+    testImplementation rootProject.ext.dependencies["mockito-kotlin"]
+    //robolectric
+    testImplementation rootProject.ext.dependencies["robolectric"]
+    testImplementation rootProject.ext.dependencies["robolectric-v4"]
+    //android support
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    api rootProject.ext.dependencies["support-annotations"]
+    api rootProject.ext.dependencies["constraint-layout"]
+    //glide
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+    //dagger2
+    api rootProject.ext.dependencies["dagger-android"]
+    api rootProject.ext.dependencies["dagger-android-support"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+    //retrofit
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["retrofit-adapter-rxjava2"]
+    api rootProject.ext.dependencies["retrofit-mock"]
+    api rootProject.ext.dependencies["retrofit-converter-gson"]
+    //rxjava
+    api rootProject.ext.dependencies["rxJava2"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxbinding"]
+    api rootProject.ext.dependencies["rxLifecycle"]
+    api rootProject.ext.dependencies["rxlifecycle-components"]
+    //okhttp
+    api rootProject.ext.dependencies["okhttp3"]
+    api rootProject.ext.dependencies["okhttp3-logging-interceptor"]
+    //stream
+    api rootProject.ext.dependencies["stream"]
+    //lombok
+    compileOnly rootProject.ext.dependencies["lombok"]
+    annotationProcessor rootProject.ext.dependencies["lombok"]
+    //RxCache
+    api(rootProject.ext.dependencies["rxCache"]) {
+        exclude group: 'org.glassfish', module: 'javax.annotation'
+    }
+    api rootProject.ext.dependencies["rxCache-Jolyglot"]
+    //kotlin
+    implementation rootProject.ext.dependencies["kotlin-android"]
+
+    implementation rootProject.ext.dependencies["router"]
+    annotationProcessor rootProject.ext.dependencies["router-compiler"]
+}
+repositories {
+    mavenCentral()
+}
