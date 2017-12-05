@@ -8,7 +8,7 @@ import java.io.File
  */
 object MockAssetReader {
 
-    private val BASE_PATH = "module/src/test/java/com/qingmei2/module/testframework/tools/data"
+    private val BASE_PATH = "module_core/src/test/java/com/qingmei2/module/testframework/tools/data"
     val USER_DATA = BASE_PATH + "/userJson_test"
     val error = BASE_PATH + "/error"
 
