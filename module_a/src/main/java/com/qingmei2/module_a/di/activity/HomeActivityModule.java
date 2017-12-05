@@ -1,8 +1,9 @@
-package com.qingmei2.module.di.module.activity;
+package com.qingmei2.module_a.di.activity;
 
-import com.qingmei2.module.mvp.contract.HomeContract;
-import com.qingmei2.module.mvp.model.HomeModel;
-import com.qingmei2.module.mvp.ui.HomeActivity;
+
+import com.qingmei2.module_a.mvp.contract.HomeContract;
+import com.qingmei2.module_a.mvp.model.HomeModel;
+import com.qingmei2.module_a.mvp.ui.HomeActivity;
 
 import dagger.Module;
 import dagger.Provides;

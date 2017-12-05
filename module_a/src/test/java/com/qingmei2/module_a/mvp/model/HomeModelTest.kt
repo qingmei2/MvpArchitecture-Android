@@ -1,4 +1,4 @@
-package com.qingmei2.module.mvp.model
+package com.qingmei2.module_a.mvp.model
 
 import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
@@ -7,7 +7,7 @@ import com.nhaarman.mockito_kotlin.whenever
 import com.qingmei2.module.http.entity.UserInfo
 import com.qingmei2.module.http.service.UserInfoService
 import com.qingmei2.module.testframework.basekt.BaseTestModel
-import com.qingmei2.module.testframework.tools.MockAssest
+import com.qingmei2.module.testframework.tools.MockAssetReader
 import com.qingmei2.module.testframework.tools.MockRetrofit
 import com.qingmei2.module.testframework.tools.RxTestTransformer
 import com.qingmei2.module.testframework.tools.TestSchedulerProvider
@@ -29,6 +29,7 @@ class HomeModelTest : BaseTestModel() {
 
     private val provider = TestSchedulerProvider()
 
+
     @Before
     fun setUp() {
         homeModel.schedulers = provider
@@ -41,7 +42,7 @@ class HomeModelTest : BaseTestModel() {
     @Test
     fun requestUserInfo() {
         val testObserver = TestObserver<UserInfo>()
-        retrofit.path = MockAssest.USER_DATA
+        retrofit.path = MockAssetReader.USER_DATA
         doReturn(RxTestTransformer<UserInfo>()).whenever(homeModel).getUserInfoCache(anyString(), anyBoolean())
 
         val maybe = homeModel.requestUserInfo("qingmei2")

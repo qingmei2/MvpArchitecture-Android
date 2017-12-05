@@ -14,7 +14,5 @@ import dagger.Module;
 })
 public abstract class BroadcastsModule {
 
-//    @ContributesAndroidInjector(modules = JPushRecevierModule.class)
-//    abstract JPushReceiver jPushReceiver();
 
 }

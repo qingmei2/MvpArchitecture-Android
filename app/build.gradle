@@ -50,10 +50,32 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation 'junit:junit:4.12'
-    implementation project(':module_core')
-    implementation rootProject.ext.dependencies["support-annotations"]
-    implementation rootProject.ext.dependencies["kotlin-android"]
+    implementation rootProject.ext.dependencies["appcompat-v7"]
+    //Junit
+    testImplementation rootProject.ext.dependencies["junit"]
+    //espresso
+    androidTestImplementation(rootProject.ext.dependencies["espresso-core"]) {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+    androidTestImplementation(rootProject.ext.dependencies["espresso-test-runner"]) {
+        exclude module: 'support-annotations'
+    }
+    //mockito
+    testImplementation rootProject.ext.dependencies["mockito-kotlin"]
+    //robolectric
+    testImplementation rootProject.ext.dependencies["robolectric"]
+    testImplementation rootProject.ext.dependencies["robolectric-v4"]
+
+    implementation rootProject.ext.dependencies["router"]
+    annotationProcessor rootProject.ext.dependencies["router-compiler"]
+    //dagger2
+    implementation rootProject.ext.dependencies["dagger-android"]
+    implementation rootProject.ext.dependencies["dagger-android-support"]
+    annotationProcessor rootProject.ext.dependencies["dagger-compiler"]
+    annotationProcessor rootProject.ext.dependencies["dagger-android-processor"]
+
+    api project(':module_a')
 }
 repositories {
     mavenCentral()

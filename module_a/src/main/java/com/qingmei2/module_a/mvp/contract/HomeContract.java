@@ -1,4 +1,4 @@
-package com.qingmei2.module.mvp.contract;
+package com.qingmei2.module_a.mvp.contract;
 
 import com.qingmei2.module.base.IModel;
 import com.qingmei2.module.base.IPresenter;

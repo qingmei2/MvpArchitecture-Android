@@ -1,11 +1,12 @@
-package com.qingmei2.module.mvp.presenter
+package com.qingmei2.module_a.mvp.presenter
 
 import com.google.gson.Gson
 import com.nhaarman.mockito_kotlin.*
 import com.qingmei2.module.http.entity.UserInfo
 import com.qingmei2.module.mvp.contract.HomeContract
+import com.qingmei2.module.mvp.presenter.HomePresenter
 import com.qingmei2.module.testframework.basekt.BaseTestPresenter
-import com.qingmei2.module.testframework.tools.MockAssest
+import com.qingmei2.module.testframework.tools.MockAssetReader
 import com.qingmei2.module.testframework.tools.RxTestTransformer
 import io.reactivex.Maybe
 import org.junit.Before
@@ -33,8 +34,7 @@ class HomePresenterTest : BaseTestPresenter() {
 
     @Test
     fun requestUserInfoSuccess() {
-
-        val s = MockAssest.readFile(MockAssest.USER_DATA)
+        val s = MockAssetReader.readFile(MockAssetReader.USER_DATA)
         val user = Gson().fromJson(s, UserInfo::class.java)
         whenever(model.requestUserInfo(anyString())).thenReturn(Maybe.just(user))
 
@@ -50,7 +50,7 @@ class HomePresenterTest : BaseTestPresenter() {
 
     @Test
     fun requestUserInfoFailedError() {
-        val s = MockAssest.readFile(MockAssest.error)
+        val s = MockAssetReader.readFile(MockAssetReader.error)
         val user = Gson().fromJson(s, UserInfo::class.java)
         whenever(model.requestUserInfo(anyString())).thenReturn(Maybe.just(user))
 

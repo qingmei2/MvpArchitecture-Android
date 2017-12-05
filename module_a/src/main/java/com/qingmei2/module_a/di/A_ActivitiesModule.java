@@ -1,9 +1,9 @@
-package com.qingmei2.module.di.module;
+package com.qingmei2.module_a.di;
 
 import com.qingmei2.module.di.component.BaseActivityComponent;
-import com.qingmei2.module.di.module.activity.HomeActivityModule;
 import com.qingmei2.module.di.scope.ActivityScope;
-import com.qingmei2.module.mvp.ui.HomeActivity;
+import com.qingmei2.module_a.di.activity.HomeActivityModule;
+import com.qingmei2.module_a.mvp.ui.HomeActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -15,7 +15,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module(subcomponents = {
         BaseActivityComponent.class
 })
-public abstract class ActivitiesModule {
+public abstract class A_ActivitiesModule {
 
     @ActivityScope
     @ContributesAndroidInjector(modules = HomeActivityModule.class)

@@ -1,4 +1,4 @@
-package com.qingmei2.module.mvp.presenter;
+package com.qingmei2.module_a.mvp.presenter;
 
 import android.annotation.SuppressLint;
 

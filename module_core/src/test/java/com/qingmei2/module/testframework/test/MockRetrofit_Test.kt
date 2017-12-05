@@ -1,6 +1,6 @@
 package com.qingmei2.module.testframework.test
 
-import com.qingmei2.module.testframework.tools.MockAssest
+import com.qingmei2.module.testframework.tools.MockAssetReader
 import com.qingmei2.module.testframework.tools.MockRetrofit
 import org.junit.Test
 
@@ -14,7 +14,7 @@ class MockRetrofit_Test {
     fun mockRetrofitTest() {
         val retrofit = MockRetrofit()
         val service = retrofit.create(TestService::class.java)
-        retrofit.path = MockAssest.USER_DATA
+        retrofit.path = MockAssetReader.USER_DATA
 
         service.getUser("test")
                 .test()

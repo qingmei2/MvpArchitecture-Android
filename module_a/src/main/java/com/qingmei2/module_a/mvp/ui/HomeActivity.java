@@ -1,4 +1,4 @@
-package com.qingmei2.module.mvp.ui;
+package com.qingmei2.module_a.mvp.ui;
 
 import android.widget.Button;
 import android.widget.ImageView;

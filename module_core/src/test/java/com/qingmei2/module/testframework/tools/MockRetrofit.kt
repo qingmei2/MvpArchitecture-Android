@@ -17,7 +17,7 @@ class MockRetrofit {
 
         val client = OkHttpClient.Builder()
                 .addInterceptor(Interceptor { chain ->
-                    val content = MockAssest.readFile(path)
+                    val content = MockAssetReader.readFile(path)
                     val body = ResponseBody.create(MediaType.parse("application/x-www-form-urlencoded"), content)
                     val response = Response.Builder()
                             .request(chain.request())

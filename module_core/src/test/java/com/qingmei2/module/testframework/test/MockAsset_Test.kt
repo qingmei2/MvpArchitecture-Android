@@ -1,6 +1,6 @@
 package com.qingmei2.module.testframework.test
 
-import com.qingmei2.module.testframework.tools.MockAssest
+import com.qingmei2.module.testframework.tools.MockAssetReader
 import io.reactivex.Observable
 import org.junit.Test
 
@@ -12,7 +12,7 @@ class MockAsset_Test {
 
     @Test
     fun assetTest() {
-        val content = MockAssest.readFile(MockAssest.USER_DATA)
+        val content = MockAssetReader.readFile(MockAssetReader.USER_DATA)
         Observable.just(content)
                 .test()
                 .assertValue("{\n" + "    \"login\": \"login\",\n" + "    \"name\": \"name\"\n" + "}")

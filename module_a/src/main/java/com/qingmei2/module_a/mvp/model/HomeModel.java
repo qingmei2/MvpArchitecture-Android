@@ -1,4 +1,4 @@
-package com.qingmei2.module.mvp.model;
+package com.qingmei2.module_a.mvp.model;
 
 import android.support.annotation.VisibleForTesting;
 
