@@ -4,7 +4,7 @@ MVP模式的模块化开发框架。
 
 开发环境：AndroidStudio 3.0
 
-* 网络层：
+#### 网络层：
 
 HTTP : Rxjava2 + Retrofit2 + Okhttp3
 
@@ -12,7 +12,7 @@ ImageLoader:Glide v4
 
 Cache: RxCache
 
-* 数据处理层：
+#### 数据处理层：
 
 JavaBean: lombok
 
@@ -20,7 +20,7 @@ Java8：Stream + Lambda
 
 Dependencies Injection: DaggerAndroid
 
-* UI层：
+#### UI层：
 
 Views Binding: DataBinding
 
@@ -28,7 +28,7 @@ Views Binding: DataBinding
 
 Layout:ConstraintLayout
 
-* 测试层：
+#### 测试层：
 
 AndroidTest: Espresso
 
