@@ -12,11 +12,8 @@ import com.qingmei2.module_a.databinding.ActivityHomeBinding;
 import com.qingmei2.module_a.mvp.contract.HomeContract;
 import com.qingmei2.module_a.mvp.presenter.HomePresenter;
 import com.qingmei2.module_business.model.UserModel;
-import com.qingmei2.module_business.router.RouterService;
 
 import java.util.concurrent.TimeUnit;
-
-import javax.inject.Inject;
 
 public class HomeActivity extends BaseActivity<HomePresenter, ActivityHomeBinding> implements HomeContract.View {
 
@@ -27,8 +24,6 @@ public class HomeActivity extends BaseActivity<HomePresenter, ActivityHomeBindin
 
     @com.baronzhang.android.router.annotation.inject.Inject("userModel")
     UserModel user;
-    @Inject
-    RouterService router;
 
     @Override
     protected void initData() {

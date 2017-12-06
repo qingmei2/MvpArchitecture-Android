@@ -8,7 +8,6 @@ import com.qingmei2.module.di.module.GlobalConfigModule;
 import com.qingmei2.module.di.module.HttpClientModule;
 import com.qingmei2.module.di.module.ServiceModule;
 import com.qingmei2.module.http.service.ServiceManager;
-import com.qingmei2.module_business.di.RouterModule;
 
 import javax.inject.Singleton;
 
@@ -30,7 +29,6 @@ import okhttp3.OkHttpClient;
         GlobalConfigModule.class,
         ServiceModule.class,
         CacheModule.class,
-        RouterModule.class,
         AbstractModuleActivitiesModule.class
 })
 public interface ModuleAppComponent {

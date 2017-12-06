@@ -1,7 +1,6 @@
 package com.qingmei2.mvparchitecture;
 
 import com.qingmei2.module.base.BaseApplication;
-import com.qingmei2.module_business.di.RouterModule;
 import com.qingmei2.mvparchitecture.di.DaggerAppComponent;
 
 /**
@@ -19,7 +18,6 @@ public class AppBaseApplication extends BaseApplication {
                 .globalConfigModule(getGlobalConfigModule())
                 .httpClientModule(getHttpClientModule())
                 .serviceModule(getServiceModule())
-                .routerModule(new RouterModule(this))
                 .build()
                 .inject(this);
     }
