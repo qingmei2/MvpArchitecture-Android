@@ -98,9 +98,7 @@ dependencies {
     compileOnly rootProject.ext.dependencies["lombok"]
     annotationProcessor rootProject.ext.dependencies["lombok"]
     //RxCache
-    api(rootProject.ext.dependencies["rxCache"]) {
-        exclude group: 'org.glassfish', module: 'javax.annotation'
-    }
+    api(rootProject.ext.dependencies["rxCache"])
     api rootProject.ext.dependencies["rxCache-Jolyglot"]
     //kotlin
     implementation rootProject.ext.dependencies["kotlin-android"]
