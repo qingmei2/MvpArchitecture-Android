@@ -3,6 +3,7 @@ package com.qingmei2.module_a.mvp.ui;
 import android.widget.Toast;
 
 import com.annimon.stream.Optional;
+import com.baronzhang.android.router.RouterInjector;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qingmei2.module.base.BaseActivity;
 import com.qingmei2.module.http.entity.UserInfo;
@@ -26,18 +27,19 @@ public class HomeActivity extends BaseActivity<HomePresenter, ActivityHomeBindin
     UserModel user;
 
     @Override
+    protected void initView() {
+        RouterInjector.inject(this);
+        RxView.clicks(b.btnUserInfo)
+                .throttleFirst(500, TimeUnit.MILLISECONDS)
+                .subscribe(v -> presenter.requestUserInfo("qingmei2"));
+    }
+
+    @Override
     protected void initData() {
         b.tvUserInfo.setText(Optional.ofNullable(user)
                 .map(UserModel::toString)
                 .map(s -> "跨module传递的数据:" + s)
                 .orElse("跨module传递的数据为空"));
-    }
-
-    @Override
-    protected void initView() {
-        RxView.clicks(b.btnUserInfo)
-                .throttleFirst(500, TimeUnit.MILLISECONDS)
-                .subscribe(v -> presenter.requestUserInfo("qingmei2"));
     }
 
     @Override

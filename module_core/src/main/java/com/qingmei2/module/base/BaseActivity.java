@@ -5,7 +5,6 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.baronzhang.android.router.RouterInjector;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import javax.inject.Inject;
@@ -47,12 +46,11 @@ public abstract class BaseActivity<P extends IPresenter,B extends ViewDataBindin
 
     protected void inject() {
         AndroidInjection.inject(this);
-        RouterInjector.inject(this);
     }
 
-    protected abstract void initData();
-
     protected abstract void initView();
+
+    protected abstract void initData();
 
     @Override
     public void showLoading() {
