@@ -1,11 +1,11 @@
 package com.qingmei2.module.base;
 
 import android.app.Activity;
-import android.app.Application;
 import android.app.Fragment;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.ContentProvider;
+import android.support.multidex.MultiDexApplication;
 import android.support.v4.content.ContextCompat;
 
 import com.qingmei2.module.di.component.DaggerBaseAppComponent;
@@ -38,7 +38,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * desc:
  */
 
-public class BaseApplication extends Application implements HasActivityInjector,
+public class BaseApplication extends MultiDexApplication implements HasActivityInjector,
         HasBroadcastReceiverInjector,
         HasFragmentInjector,
         HasServiceInjector,
