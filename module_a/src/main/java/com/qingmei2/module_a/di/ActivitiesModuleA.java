@@ -15,7 +15,7 @@ import dagger.android.ContributesAndroidInjector;
 @Module(subcomponents = {
         BaseActivityComponent.class
 })
-public abstract class AbstractModuleActivitiesModule {
+public abstract class ActivitiesModuleA {
 
     @ActivityScope
     @ContributesAndroidInjector(modules = HomeActivityModule.class)

@@ -8,7 +8,6 @@ import android.content.ContentProvider;
 import android.support.multidex.MultiDexApplication;
 import android.support.v4.content.ContextCompat;
 
-import com.qingmei2.module.di.component.DaggerBaseAppComponent;
 import com.qingmei2.module.di.module.AppModule;
 import com.qingmei2.module.di.module.CacheModule;
 import com.qingmei2.module.di.module.GlobalConfigModule;
@@ -38,7 +37,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
  * desc:
  */
 
-public class BaseApplication extends MultiDexApplication implements HasActivityInjector,
+public abstract class BaseApplication extends MultiDexApplication implements HasActivityInjector,
         HasBroadcastReceiverInjector,
         HasFragmentInjector,
         HasServiceInjector,
@@ -75,17 +74,20 @@ public class BaseApplication extends MultiDexApplication implements HasActivityI
         injectApp();
     }
 
-    //这是类库底层的injectApp代码示例，你应该在你的Module中重写该方法
-    protected void injectApp() {
-        DaggerBaseAppComponent.builder()
-                .cacheModule(getCacheModule())
-                .appModule(getAppModule())
-                .globalConfigModule(getGlobalConfigModule())
-                .httpClientModule(getHttpClientModule())
-                .serviceModule(getServiceModule())
-                .build()
-                .inject(this);
-    }
+    /**
+     * 这是类库底层的injectApp代码示例，你应该在你的Module中重写该方法:
+     *
+     *         DaggerBaseAppComponent.builder()
+     *           .cacheModule(getCacheModule())
+     *           .appModule(getAppModule())
+     *           .globalConfigModule(getGlobalConfigModule())
+     *           .httpClientModule(getHttpClientModule())
+     *           .serviceModule(getServiceModule())
+     *           .build()
+     *           .inject(this);
+     *
+     */
+    abstract protected void injectApp();
 
     protected AppModule getAppModule() {
         return new AppModule(this);
@@ -94,7 +96,6 @@ public class BaseApplication extends MultiDexApplication implements HasActivityI
     protected GlobalConfigModule getGlobalConfigModule() {
         return GlobalConfigModule.buidler()
                 .baseurl(Api.BASE_API)
-                //这行代码为log打印网络请求信息，可以考虑在release版中取消该行代码
                 .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .globeHttpHandler(new HttpRequestHandler() {
                     @Override
@@ -121,6 +122,10 @@ public class BaseApplication extends MultiDexApplication implements HasActivityI
     protected CacheModule getCacheModule() {
         return new CacheModule(ContextCompat.getExternalCacheDirs(this)[0]);
     }
+
+    ///////////////////////////////////////////////////////////////////////////
+    // Dependencies Injection by dagger.android
+    ///////////////////////////////////////////////////////////////////////////
 
     @Override
     public AndroidInjector<Activity> activityInjector() {

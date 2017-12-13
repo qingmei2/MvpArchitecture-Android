@@ -29,7 +29,7 @@ import okhttp3.OkHttpClient;
         GlobalConfigModule.class,
         ServiceModule.class,
         CacheModule.class,
-        AbstractModuleActivitiesModule.class
+        ActivitiesModuleA.class
 })
 public interface ModuleAppComponent {
 
