@@ -2,8 +2,10 @@ package com.qingmei2.module_a.mvp.ui;
 
 import android.widget.Toast;
 
+import com.alibaba.android.arouter.facade.annotation.Autowired;
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.annimon.stream.Optional;
-import com.baronzhang.android.router.RouterInjector;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.qingmei2.module.base.BaseActivity;
 import com.qingmei2.module.http.entity.UserInfo;
@@ -13,9 +15,11 @@ import com.qingmei2.module_a.databinding.ActivityHomeBinding;
 import com.qingmei2.module_a.mvp.contract.HomeContract;
 import com.qingmei2.module_a.mvp.presenter.HomePresenter;
 import com.qingmei2.module_business.model.UserModel;
+import com.qingmei2.module_business.router.RouterConstants;
 
 import java.util.concurrent.TimeUnit;
 
+@Route(path = RouterConstants.ModuleA.ACTIVITY_HOME)
 public class HomeActivity extends BaseActivity<HomePresenter, ActivityHomeBinding> implements HomeContract.View {
 
     @Override
@@ -23,15 +27,20 @@ public class HomeActivity extends BaseActivity<HomePresenter, ActivityHomeBindin
         return R.layout.activity_home;
     }
 
-    @com.baronzhang.android.router.annotation.inject.Inject("userModel")
+    @Autowired
     UserModel user;
 
     @Override
     protected void initView() {
-        RouterInjector.inject(this);
         RxView.clicks(b.btnUserInfo)
                 .throttleFirst(500, TimeUnit.MILLISECONDS)
                 .subscribe(v -> presenter.requestUserInfo("qingmei2"));
+    }
+
+    @Override
+    protected void inject() {
+        super.inject();
+        ARouter.getInstance().inject(this);
     }
 
     @Override

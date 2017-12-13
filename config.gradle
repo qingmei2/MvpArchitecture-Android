@@ -7,7 +7,8 @@ def butterKnife_version = '9.0.0-SNAPSHOT'
 def support_version = '27.0.2'
 def espresso_version = '2.2.2'
 def glide_version = '4.2.0'
-def routerVersion = "0.2.3"
+def routerVersion = "1.2.4"
+def routerCompilerVersion = "1.1.4"
 
 project.ext {
     android = [
@@ -56,8 +57,8 @@ project.ext {
             "dagger-android-processor"   : "com.google.dagger:dagger-android-processor:${dagger_version}",
 
             //router
-            "router"                     : "com.baronzhang.android:router:${routerVersion}",
-            "router-compiler"            : "com.baronzhang.android:router-compiler:${routerVersion}",
+            "router"                     : "com.alibaba:arouter-api:${routerVersion}",
+            "router-compiler"            : "com.alibaba:arouter-compiler:${routerCompilerVersion}",
 
             //okHttp3
             "okhttp3"                    : "com.squareup.okhttp3:okhttp:${okhttp_version}",

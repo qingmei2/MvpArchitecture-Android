@@ -8,6 +8,8 @@ import android.content.ContentProvider;
 import android.support.multidex.MultiDexApplication;
 import android.support.v4.content.ContextCompat;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+import com.qingmei2.module.BuildConfig;
 import com.qingmei2.module.di.module.AppModule;
 import com.qingmei2.module.di.module.CacheModule;
 import com.qingmei2.module.di.module.GlobalConfigModule;
@@ -66,26 +68,40 @@ public abstract class BaseApplication extends MultiDexApplication implements Has
     @Override
     public void onCreate() {
         super.onCreate();
-        inject();
+        initRouter();
+        initDI();
     }
 
-    private void inject() {
+    /**
+     * 初始化ARouter
+     * <p>
+     * {@link BuildConfig} 决定是否开启调试模式
+     * (如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+     */
+    protected void initRouter() {
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog();
+            ARouter.openDebug();
+        }
+        ARouter.init(this);
+    }
+
+    private void initDI() {
         BaseApplication.instance = this;
         injectApp();
     }
 
     /**
      * 这是类库底层的injectApp代码示例，你应该在你的Module中重写该方法:
-     *
-     *         DaggerBaseAppComponent.builder()
-     *           .cacheModule(getCacheModule())
-     *           .appModule(getAppModule())
-     *           .globalConfigModule(getGlobalConfigModule())
-     *           .httpClientModule(getHttpClientModule())
-     *           .serviceModule(getServiceModule())
-     *           .build()
-     *           .inject(this);
-     *
+     * <p>
+     * DaggerBaseAppComponent.builder()
+     * .cacheModule(getCacheModule())
+     * .appModule(getAppModule())
+     * .globalConfigModule(getGlobalConfigModule())
+     * .httpClientModule(getHttpClientModule())
+     * .serviceModule(getServiceModule())
+     * .build()
+     * .initDI(this);
      */
     abstract protected void injectApp();
 
