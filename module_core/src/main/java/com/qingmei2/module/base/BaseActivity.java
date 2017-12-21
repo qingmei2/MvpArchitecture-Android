@@ -5,18 +5,14 @@ import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
-
 import javax.inject.Inject;
-
-import dagger.android.AndroidInjection;
 
 /**
  * Created by QingMei on 2017/8/14.
  * desc:
  */
 
-public abstract class BaseActivity<P extends IPresenter,B extends ViewDataBinding> extends RxAppCompatActivity implements IActivity {
+public abstract class BaseActivity<P extends IPresenter, B extends ViewDataBinding> extends BaseDaggerActivity implements IActivity {
 
     protected B b;
 
@@ -25,7 +21,6 @@ public abstract class BaseActivity<P extends IPresenter,B extends ViewDataBindin
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        inject();
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         b = DataBindingUtil.setContentView(this, getLayoutId());
@@ -43,10 +38,6 @@ public abstract class BaseActivity<P extends IPresenter,B extends ViewDataBindin
     }
 
     protected abstract int getLayoutId();
-
-    protected void inject() {
-        AndroidInjection.inject(this);
-    }
 
     protected abstract void initView();
 
