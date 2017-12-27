@@ -1,6 +1,5 @@
 package com.qingmei2.module.base;
 
-import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
@@ -9,18 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.trello.rxlifecycle2.components.support.RxFragment;
-
 import javax.inject.Inject;
-
-import dagger.android.support.AndroidSupportInjection;
 
 /**
  * Created by QingMei on 2017/8/14.
  * desc:
  */
 
-public abstract class BaseFragment<P extends IPresenter, B extends ViewDataBinding> extends RxFragment implements IFragment {
+public abstract class BaseFragment<P extends IPresenter, B extends ViewDataBinding> extends BaseDaggerFragment implements IFragment {
 
     protected B b;
 
@@ -41,12 +36,6 @@ public abstract class BaseFragment<P extends IPresenter, B extends ViewDataBindi
         b = DataBindingUtil.bind(view);
         initView(view);
         initData();
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        AndroidSupportInjection.inject(this);
-        super.onAttach(activity);
     }
 
     @Override
