@@ -93,8 +93,8 @@ dependencies {
     api rootProject.ext.dependencies["rxJava2"]
     api rootProject.ext.dependencies["rxandroid"]
     api rootProject.ext.dependencies["rxbinding"]
-    api rootProject.ext.dependencies["rxLifecycle"]
-    api rootProject.ext.dependencies["rxlifecycle-components"]
+    api rootProject.ext.dependencies["auto-dispose"]
+    api rootProject.ext.dependencies["auto-dispose-archcomponents"]
     //okhttp
     api rootProject.ext.dependencies["okhttp3"]
     api rootProject.ext.dependencies["okhttp3-logging-interceptor"]

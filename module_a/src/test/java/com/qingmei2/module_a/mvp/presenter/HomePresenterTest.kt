@@ -5,7 +5,6 @@ import com.nhaarman.mockito_kotlin.*
 import com.qingmei2.module.http.entity.UserInfo
 import com.qingmei2.module.testframework.basekt.BaseTestPresenter
 import com.qingmei2.module.testframework.tools.MockAssetReader
-import com.qingmei2.module.testframework.tools.RxTestTransformer
 import com.qingmei2.module_a.data.MockAsset
 import com.qingmei2.module_a.mvp.contract.HomeContract
 import io.reactivex.Maybe
@@ -29,7 +28,6 @@ class HomePresenterTest : BaseTestPresenter() {
     @Before
     fun setUp() {
         presenter = spy(presenter)
-        doReturn(RxTestTransformer<Any>()).whenever(presenter).bindViewMaybe<Any>(view)
     }
 
     @Test

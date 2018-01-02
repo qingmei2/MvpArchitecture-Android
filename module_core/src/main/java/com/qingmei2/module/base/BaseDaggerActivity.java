@@ -3,8 +3,7 @@ package com.qingmei2.module.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-
-import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
@@ -19,7 +18,7 @@ import dagger.android.support.HasSupportFragmentInjector;
  * desc:
  */
 
-public class BaseDaggerActivity extends RxAppCompatActivity
+public class BaseDaggerActivity extends AppCompatActivity
         implements HasFragmentInjector, HasSupportFragmentInjector {
 
     @Inject

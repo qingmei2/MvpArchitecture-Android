@@ -25,7 +25,6 @@ public class HomePresenter extends BasePresenter<HomeContract.View, HomeContract
     @Override
     public void requestUserInfo(String userName) {
         mModel.requestUserInfo(userName)
-                .compose(bindViewMaybe(mRootView))
                 .subscribe(info -> Optional.ofNullable(info)
                                 .map(UserInfo::getLogin)
                                 .ifPresentOrElse(image -> mRootView.onGetUserInfo(info)

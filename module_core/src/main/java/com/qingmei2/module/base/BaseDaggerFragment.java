@@ -1,8 +1,7 @@
 package com.qingmei2.module.base;
 
 import android.app.Activity;
-
-import com.trello.rxlifecycle2.components.support.RxFragment;
+import android.support.v4.app.Fragment;
 
 import dagger.android.support.AndroidSupportInjection;
 
@@ -11,7 +10,7 @@ import dagger.android.support.AndroidSupportInjection;
  * desc:
  */
 
-public abstract class BaseDaggerFragment extends RxFragment {
+public abstract class BaseDaggerFragment extends Fragment {
 
     protected void inject() {
         AndroidSupportInjection.inject(this);
