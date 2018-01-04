@@ -1,11 +1,27 @@
 package com.qingmei2.module.base;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.OnLifecycleEvent;
+
+import org.jetbrains.annotations.NotNull;
+
 /**
- * Created by QingMei on 2017/8/14.
- * desc:
+ * Any Presenter should implement {@link IPresenter}, ensure that IPresenter is
+ * {@link LifecycleObserver}, observer the {@link BaseActivity} or {@link BaseFragment} lifecycle change.
+ * <p>
+ * Created by qingmei2 on 2017/8/14.
  */
+public interface IPresenter extends LifecycleObserver {
 
-public interface IPresenter {
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    void onCreate(@NotNull LifecycleOwner owner);
 
-    void onDestroy();
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    void onDestroy(@NotNull LifecycleOwner owner);
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_ANY)
+    void onLifecycleChanged(@NotNull LifecycleOwner owner,
+                            @NotNull Lifecycle.Event event);
 }
