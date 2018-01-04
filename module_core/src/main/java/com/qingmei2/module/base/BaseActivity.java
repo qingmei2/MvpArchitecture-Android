@@ -12,7 +12,7 @@ import javax.inject.Inject;
  * desc:
  */
 
-public abstract class BaseActivity<P extends IPresenter, B extends ViewDataBinding> extends BaseDaggerActivity implements IActivity {
+public abstract class BaseActivity<P extends IPresenter, B extends ViewDataBinding> extends BaseInjectActivity implements IActivity {
 
     protected B b;
 
