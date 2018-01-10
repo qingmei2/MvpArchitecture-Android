@@ -28,6 +28,12 @@ Views Binding: DataBinding
 
 Layout:ConstraintLayout
 
+#### 其他三方库：
+
+[1.AutoDispose:Automatic binding+disposal of RxJava 2 streams.](https://github.com/uber/AutoDispose)  
+[2.RxBinding:RxJava binding APIs for Android's UI widgets.](https://github.com/JakeWharton/RxBinding)  
+[3.ARouter:An android router middleware that help app navigating to activities and custom services.](https://github.com/alibaba/ARouter)  
+
 #### 测试层：
 
 AndroidTest: Espresso
@@ -42,4 +48,4 @@ UnitTest: Mockito + Robolectric
 
 > 3.module_core:底部架构级模块，业务开发中很少修改的模块，包括各个三方库的依赖，各种BaseXXX类、Util类，以及底层级别的依赖注入配置等
 
-> 4.module_business：不同业务模块间消息传递的模块，采用Router，比如搜索模块和用户信息模块界面之间数据的传递
+> 4.module_business：不同业务模块间消息传递的模块，采用ARouter，比如搜索模块和用户信息模块界面之间数据的传递
