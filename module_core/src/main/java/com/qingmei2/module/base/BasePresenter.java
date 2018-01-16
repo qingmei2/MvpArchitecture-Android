@@ -45,6 +45,34 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
     @Override
     @CallSuper
     @MainThread
+    public void onStart(@NotNull LifecycleOwner owner) {
+
+    }
+
+    @Override
+    @CallSuper
+    @MainThread
+    public void onResume(@NotNull LifecycleOwner owner) {
+
+    }
+
+    @Override
+    @CallSuper
+    @MainThread
+    public void onPause(@NotNull LifecycleOwner owner) {
+
+    }
+
+    @Override
+    @CallSuper
+    @MainThread
+    public void onStop(@NotNull LifecycleOwner owner) {
+
+    }
+
+    @Override
+    @CallSuper
+    @MainThread
     public void onDestroy(@NotNull LifecycleOwner owner) {
         if (mModel != null) {
             mModel.onDestroy();
