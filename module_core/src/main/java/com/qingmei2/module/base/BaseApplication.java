@@ -9,6 +9,8 @@ import android.support.multidex.MultiDexApplication;
 import android.support.v4.content.ContextCompat;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.ihsanbal.logging.Level;
+import com.ihsanbal.logging.LoggingInterceptor;
 import com.qingmei2.module.BuildConfig;
 import com.qingmei2.module.di.module.AppModule;
 import com.qingmei2.module.di.module.CacheModule;
@@ -31,7 +33,7 @@ import dagger.android.support.HasSupportFragmentInjector;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.internal.platform.Platform;
 
 
 /**
@@ -112,7 +114,13 @@ public abstract class BaseApplication extends MultiDexApplication implements Has
     protected GlobalConfigModule getGlobalConfigModule() {
         return GlobalConfigModule.buidler()
                 .baseurl(Api.BASE_API)
-                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                .addInterceptor(new LoggingInterceptor.Builder()
+                        .loggable(BuildConfig.DEBUG)
+                        .setLevel(Level.BASIC)
+                        .log(Platform.INFO)
+                        .request("Request")
+                        .response("Response")
+                        .build())
                 .globeHttpHandler(new HttpRequestHandler() {
                     @Override
                     public Response onHttpResultResponse(String httpResult, Interceptor.Chain chain, Response response) {

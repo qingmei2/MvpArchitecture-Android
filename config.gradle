@@ -62,7 +62,7 @@ project.ext {
 
             //okHttp3
             "okhttp3"                    : "com.squareup.okhttp3:okhttp:${okhttp_version}",
-            "okhttp3-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:${okhttp_version}",
+            "okhttp3-logging-interceptor": "com.github.ihsanbal:LoggingInterceptor:2.0.4",
 
             //lombok
             "lombok"                     : "org.projectlombok:lombok:${lombok_version}",
