@@ -8,6 +8,9 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.MainThread;
 import android.support.annotation.Nullable;
 
+import com.qingmei2.module.util.RxLifecycleUtils;
+import com.uber.autodispose.AutoDisposeConverter;
+
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -32,6 +35,10 @@ public abstract class BaseActivity<P extends IPresenter, B extends ViewDataBindi
         initLifecycleObserver(getLifecycle());
         initView();
         initData();
+    }
+
+    protected <T> AutoDisposeConverter<T> bindLifecycle() {
+        return RxLifecycleUtils.bindLifecycle(this);
     }
 
     @MainThread

@@ -11,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.qingmei2.module.util.RxLifecycleUtils;
+import com.uber.autodispose.AutoDisposeConverter;
+
 import org.jetbrains.annotations.NotNull;
 
 import javax.inject.Inject;
@@ -48,6 +51,10 @@ public abstract class BaseFragment<P extends IPresenter, B extends ViewDataBindi
     public void onDestroy() {
         this.rootView = null;
         super.onDestroy();
+    }
+
+    protected <T> AutoDisposeConverter<T> bindLifecycle() {
+        return RxLifecycleUtils.bindLifecycle(this);
     }
 
     @CallSuper

@@ -6,6 +6,9 @@ import android.arch.lifecycle.LifecycleOwner;
 import android.support.annotation.CallSuper;
 import android.support.annotation.MainThread;
 
+import com.qingmei2.module.util.RxLifecycleUtils;
+import com.uber.autodispose.AutoDisposeConverter;
+
 import org.jetbrains.annotations.NotNull;
 
 import lombok.Getter;
@@ -23,16 +26,24 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
     @Getter
     protected M mModel;
 
+    private LifecycleOwner lifecycleOwner;
+
     public BasePresenter(V rootView, M model) {
         this.mRootView = rootView;
         this.mModel = model;
+    }
+
+    protected <T> AutoDisposeConverter<T> bindLifecycle() {
+        if (null == lifecycleOwner)
+            throw new NullPointerException("lifecycleOwner == null");
+        return RxLifecycleUtils.bindLifecycle(lifecycleOwner);
     }
 
     @Override
     @CallSuper
     @MainThread
     public void onLifecycleChanged(@NotNull LifecycleOwner owner, @NotNull Lifecycle.Event event) {
-
+        this.lifecycleOwner = owner;
     }
 
     @Override
@@ -74,6 +85,8 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
     @CallSuper
     @MainThread
     public void onDestroy(@NotNull LifecycleOwner owner) {
+        this.lifecycleOwner = null;
+
         if (mModel != null) {
             mModel.onDestroy();
             this.mModel = null;
