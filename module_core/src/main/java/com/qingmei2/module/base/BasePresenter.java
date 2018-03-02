@@ -18,7 +18,7 @@ import lombok.Getter;
  */
 public class BasePresenter<V extends IView, M extends IModel> implements IPresenter {
 
-    private static final String TAG = "com.qingmei2.module.base.BasePresenter";
+    private static final String TAG = "core.base.BasePresenter";
 
     @Getter
     protected V mRootView;
@@ -43,14 +43,14 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
     @CallSuper
     @MainThread
     public void onLifecycleChanged(@NotNull LifecycleOwner owner, @NotNull Lifecycle.Event event) {
-        this.lifecycleOwner = owner;
+
     }
 
     @Override
     @CallSuper
     @MainThread
     public void onCreate(@NotNull LifecycleOwner owner) {
-
+        this.lifecycleOwner = owner;
     }
 
     @Override
