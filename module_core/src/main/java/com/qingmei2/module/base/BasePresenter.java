@@ -85,8 +85,6 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
     @CallSuper
     @MainThread
     public void onDestroy(@NotNull LifecycleOwner owner) {
-        this.lifecycleOwner = null;
-
         if (mModel != null) {
             mModel.onDestroy();
             this.mModel = null;
