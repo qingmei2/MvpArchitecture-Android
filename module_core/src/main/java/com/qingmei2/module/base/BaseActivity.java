@@ -47,6 +47,7 @@ public abstract class BaseActivity<P extends IPresenter, B extends ViewDataBindi
     @CallSuper
     @MainThread
     protected void initLifecycleObserver(@NotNull Lifecycle lifecycle) {
+        presenter.setLifecycleOwner(this);
         lifecycle.addObserver(presenter);
     }
 

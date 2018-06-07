@@ -47,10 +47,15 @@ public class BasePresenter<V extends IView, M extends IModel> implements IPresen
     }
 
     @Override
+    public void setLifecycleOwner(LifecycleOwner lifecycleOwner) {
+        this.lifecycleOwner = lifecycleOwner;
+    }
+
+    @Override
     @CallSuper
     @MainThread
     public void onCreate(@NotNull LifecycleOwner owner) {
-        this.lifecycleOwner = owner;
+
     }
 
     @Override

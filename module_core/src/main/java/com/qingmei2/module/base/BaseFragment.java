@@ -60,6 +60,7 @@ public abstract class BaseFragment<P extends IPresenter, B extends ViewDataBindi
     @CallSuper
     @MainThread
     protected void initLifecycleObserver(@NotNull Lifecycle lifecycle) {
+        presenter.setLifecycleOwner(this);
         lifecycle.addObserver(presenter);
     }
 
