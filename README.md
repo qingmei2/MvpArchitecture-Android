@@ -2,7 +2,10 @@
 
 MVP模式的模块化开发框架。
 
-开发环境：AndroidStudio 3.0
+> 因为MVP满足不了我的开发体验，因此该项目已停止维护。  
+> 相比前者，我更喜欢MVVM架构中这次实践，它更趋近我理想中的设计，更加Reactive和Functional：
+
+[MVVM-Rhine:The MVVM Architecture in Android.](https://github.com/qingmei2/MVVM-Rhine)
 
 #### 网络层：
 
@@ -52,11 +55,4 @@ UnitTest: Mockito + Robolectric
 > 3.module_core:底部架构级模块，业务开发中很少修改的模块，包括各个三方库的依赖，各种BaseXXX类、Util类，以及底层级别的依赖注入配置等
 
 > 4.module_business：不同业务模块间消息传递的模块，采用ARouter，比如搜索模块和用户信息模块界面之间数据的传递
-
-## 补充说明
-
-> 因为MVP架构某种意义上满足不了我的开发需求，因此该项目已停止维护。  
-> 相比前者，我更喜欢MVVM架构中这次实践，它更趋近我理想中的设计，更加Reactive和Functional：
-
-[MVVM-Rhine:The MVVM Architecture in Android.](https://github.com/qingmei2/MVVM-Rhine)
 
